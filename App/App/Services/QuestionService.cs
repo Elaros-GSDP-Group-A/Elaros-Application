@@ -36,6 +36,10 @@ namespace App.Services
         public Question Find(int id) =>
             _questions.Find(q => q.Id == id).SingleOrDefault();
 
+        // Updates a given question (Doesn't change Id)
+        public void Update(Question question) =>
+            _questions.ReplaceOne(q => q.Id == question.Id, question);
+
         // Deletes a particular question
         public void Delete(int id) =>
             _questions.DeleteOne(q => q.Id == id);
