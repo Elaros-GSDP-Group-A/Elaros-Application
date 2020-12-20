@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace App.Models
 {
+    // A simple interface to make connecting to the database nice and clean
     public interface IDatabaseSettings
     {
         string ConnectionString { get; set; }
