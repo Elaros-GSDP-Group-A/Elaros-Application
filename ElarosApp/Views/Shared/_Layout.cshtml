@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElarosApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-light">
+    
+    <header class="bg-dark border-bottom mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="lead py-2 text-warning">Long-Covid Questionnaire</div>
+                </div>
+                <div class="col-4 offset-2">
+                    <a href="#" class="my-2 btn btn-sm btn-secondary">Clinician Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-dark border-top footer text-warning">
+        <div class="container text-center">
+            &copy; 2021 - ElarosApp - Group-A
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

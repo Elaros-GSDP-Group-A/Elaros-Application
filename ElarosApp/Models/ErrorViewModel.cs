@@ -1,6 +1,6 @@
 using System;
 
-namespace App.Models
+namespace ElarosApp.Models
 {
     public class ErrorViewModel
     {
