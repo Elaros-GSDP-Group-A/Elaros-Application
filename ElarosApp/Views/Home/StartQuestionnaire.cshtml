@@ -1,12 +1,19 @@
-﻿<div class="text-center">
-    <h1 class="display-4">Please enter your referral code </h1>
+﻿@model string
+<div class="text-center">
+    <h1 class="display-4">Please enter your referal code </h1>
     <p>This will be in your email inbox once your clinician has referred you...</p>
 
     <form method="post">
         <div class="form-group">
-            <label class="text-muted">Referral Code: </label>
-            <input type="text" value="" placeholder="A5j2iX" class="my-2"/><br />
-            <small class="form-text mb-3">You must enter this exactly as it is in your email.</small>
+            <label class="text-muted">Referal Code: </label>
+            <input type="text" value="" id="referalCode" name="referalCode" placeholder="A5j2iX" class="my-2"/><br />
+            @if (!string.IsNullOrEmpty(Model))
+            {
+                <small class="form-text mb-3 text-danger">@Model is not a valid referal code.</small>
+            } else
+            {
+                <small class="form-text mb-3">You must enter this exactly as it is in your email.</small>
+            }
             <button type="submit" class="btn btn-lg btn-primary">Start Questionnaire</button>
         </div>
     </form>
