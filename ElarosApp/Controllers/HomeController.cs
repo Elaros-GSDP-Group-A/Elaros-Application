@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ElarosApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 
 namespace ElarosApp.Controllers
 {
@@ -15,26 +20,48 @@ namespace ElarosApp.Controllers
         private List<string> patientCodeList = new List<string>() { "unggz", "QPbs8", "Tl0vW", "s0lIx", "yXo79" };
         private string _referalCode;
         [HttpPost]
-        public ActionResult Index(string referalCode)
+        public async Task<ActionResult> Index(string referalCode)
         {
             _referalCode = referalCode;
             if (patientCodeList.Contains(referalCode))
             {
-                return Content($"Successfully logged in as {referalCode}");
-            }
-            return Index();
-        }
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, referalCode)
+                };
 
+                var identity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+                var props = new AuthenticationProperties();
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    principal,
+                    props);
+
+                return RedirectToPage("/Questions/Index");
+            }
+            return View("Login");
+        }
+        
         [HttpGet]
         public ActionResult Index()
         {
+            if (HttpContext.Request.Cookies["LongCovidAuthCookie"] != null)
+                return View("../Questions/Index");
+
             if (ModelState.IsValid)
-            {
-                return View("StartQuestionnaire", _referalCode);
-            }
-            return View("StartQuestionnaire");
+                return View("Login", _referalCode);
+
+            return View("Login");
         }
 
-        
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
