@@ -41,7 +41,7 @@ namespace ElarosApp.Controllers
 
                 return RedirectToPage("/Questions/Index");
             }
-            return View("Login");
+            return Index();
         }
         
         [HttpGet]
@@ -50,10 +50,7 @@ namespace ElarosApp.Controllers
             if (HttpContext.Request.Cookies["LongCovidAuthCookie"] != null)
                 return View("../Questions/Index");
 
-            if (ModelState.IsValid)
-                return View("Login", _referalCode);
-
-            return View("Login");
+            return View("Login", _referalCode);
         }
 
         public async Task<IActionResult> Logout()
