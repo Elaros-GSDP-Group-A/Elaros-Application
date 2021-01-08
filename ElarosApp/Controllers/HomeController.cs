@@ -33,7 +33,7 @@ namespace ElarosApp.Controllers
                 var identity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
-                var props = new AuthenticationProperties{ IsPersistent = true };
+                var props = new AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTime.UtcNow.AddMinutes(30)  }; // cookie expires after 30 minutes
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     principal,
