@@ -11,28 +11,33 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using ElarosApp.Data;
 
 namespace ElarosApp.Controllers
 {
     public class HomeController : Controller
     {
-        // In memory temporary patient code list 
-        private List<string> patientCodeList = new List<string>() { "unggz", "QPbs8", "Tl0vW", "s0lIx", "yXo79" };
-        
+        private readonly DataContext _context;
         private string _referalCode;
+        public HomeController(DataContext context)
+        {
+            _context = context;
+            context.Patients.Count();
+        }
 
         [HttpPost]
         public async Task<ActionResult> Index(string referalCode)
         {
             _referalCode = referalCode;
-            if (patientCodeList.Contains(referalCode))
+            PatientModel currentPatient = _context.Patients.FirstOrDefault(patient => patient.ReferalCode == referalCode);
+            if (currentPatient != null)
             {
                 // find ref code from dbctx list of patients and assign to patientModel
 
                 // creating cookie
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, _referalCode),
+                    new Claim(ClaimTypes.Name, currentPatient.ReferalCode),
                 };
 
                 var identity = new ClaimsIdentity(
