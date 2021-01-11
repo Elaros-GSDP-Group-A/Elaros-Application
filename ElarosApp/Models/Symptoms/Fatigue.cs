@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ElarosApp.Models
 {
-    public class Anxiety { 
+    public class Fatigue
+    {
         [Key]
-        public int AnxietyId { get; set; }
+        public int FatigueId { get; set; }
         public string Precovid { get; set; }
         public string Postcovid { get; set; }
     }

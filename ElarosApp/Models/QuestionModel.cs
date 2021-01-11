@@ -13,7 +13,7 @@ namespace ElarosApp.Models
         public string QuestionContent { get; set; }
         public Breathlessness Breathlessness { get; set; }
         public int BreathlessnessId { get; set; }
-        public Coughing Coughing { get; set; }
+        public Voice Coughing { get; set; }
         public int CoughingId { get; set; }
         public Anxiety Anxiety { get; set; }
         public int AnxietyId { get; set; }
