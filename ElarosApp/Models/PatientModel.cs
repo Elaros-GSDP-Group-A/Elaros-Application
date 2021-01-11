@@ -9,6 +9,7 @@ namespace ElarosApp.Models
 {
     public class PatientModel
     {
+        [Key]
         public int PatientId { get; set; }
         public string ReferalCode { get; set; }
         public QuestionModel CurrentQuestion { get; set; }

@@ -15,7 +15,6 @@ namespace ElarosApp.Data
 
         public DbSet<PatientModel> Patients { get; set; }
         public DbSet<QuestionModel> Questions { get; set; }
-        public DbSet<AnswerModel> Answers { get; set; }
 
     }
 }
