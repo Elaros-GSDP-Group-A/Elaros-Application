@@ -18,16 +18,21 @@ namespace ElarosApp.Controllers
     {
         // In memory temporary patient code list 
         private List<string> patientCodeList = new List<string>() { "unggz", "QPbs8", "Tl0vW", "s0lIx", "yXo79" };
+        
         private string _referalCode;
+
         [HttpPost]
         public async Task<ActionResult> Index(string referalCode)
         {
             _referalCode = referalCode;
             if (patientCodeList.Contains(referalCode))
             {
+                // find ref code from dbctx list of patients and assign to patientModel
+
+                // creating cookie
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, referalCode)
+                    new Claim(ClaimTypes.Name, _referalCode),
                 };
 
                 var identity = new ClaimsIdentity(
@@ -38,6 +43,9 @@ namespace ElarosApp.Controllers
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     principal,
                     props);
+
+                //Response.Cookies.Append("currentQuestion", patientModel.CurrentQuestion.ToString());
+
 
                 return RedirectToPage("/Questions/Index");
             }
