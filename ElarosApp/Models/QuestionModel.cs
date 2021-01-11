@@ -10,26 +10,53 @@ namespace ElarosApp.Models
     {
         [Key]
         public int QuestionId { get; set; }
+        
+        // The actual question context
         public string QuestionContent { get; set; }
-        public Breathlessness Breathlessness { get; set; }
-        public int BreathlessnessId { get; set; }
-        public Voice Coughing { get; set; }
-        public int CoughingId { get; set; }
+        OverallHealth OverallHealth { get; set; }
+        Employment Employment { get; set; }
+
+        // Symptoms that a question could potentitally use
+        public Activities Activities { get; set; }
+        public int ActivitiesId { get; set; }
+
         public Anxiety Anxiety { get; set; }
         public int AnxietyId { get; set; }
 
+        public Cognition Cognition { get; set; }
+        public int CognitionId { get; set; }
 
+        public Communication Communication { get; set; }
+        public int CommunicationId { get; set; }
 
-        public void test()
-        {
+        public Consumption Consumption { get; set; }
+        public int ConsumptionId { get; set; }
 
-            QuestionModel Question1 = new QuestionModel();
+        public Continence Continence { get; set; }
+        public int ContinenceId { get; set; }
 
+        public Depression Depression { get; set; }
+        public int DepressionId { get; set; }
 
-            Question1.Breathlessness.PrecovidAtRest = 1.ToString();
-            Question1.Anxiety = null;
+        public Fatigue Fatigue { get; set; }
+        public int FatigueId { get; set; }
 
-         
-        }
+        public Mobility Mobility { get; set; }
+        public int MobilityId { get; set; }
+
+        public Pain Pain { get; set; }
+        public int PainId { get; set; }
+
+        public PersonalCare PersonalCare { get; set; }
+        public int PersonalCareId { get; set; }
+
+        public Ptsd Ptsd { get; set; }
+        public int PtsdId { get; set; }
+
+        public SocialRole SocialRole { get; set; }
+        public int SocialRoleId { get; set; }
+
+        public Voice Voice { get; set; }
+        public int VoiceId { get; set; }
     }
 }
