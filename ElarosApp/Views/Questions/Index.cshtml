@@ -1,15 +1,21 @@
 ﻿@model ElarosApp.Models.PatientModel
+Logged in as: @Model.ReferalCode
 
-<h1>Question @Model.QuestionId</h1>
-<p>@Model.Question.QuestionContent</p>
+@if (Model.Question != null)
+{
+    <h1>Question @Model.QuestionId</h1>
+    <p>@Model.Question.QuestionContent</p>
+}
+else
+{
+    <h1>QuestionId is null</h1>
+    <p>QuestionContent is null</p>
+}
 
-<p>
-   
+    <form method="post" asp-controller="Questions" asp-action="NextQuestion">
 
-
-
-
-</p>
+        <button type="submit" class="btn btn-lg btn-primary">Next Question</button>
+    </form>
 
 
 <a asp-action="Logout" asp-controller="Home">Click here to logout</a>
