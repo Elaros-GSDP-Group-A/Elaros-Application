@@ -4,14 +4,16 @@ using ElarosApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ElarosApp.Data
+namespace ElarosApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210112130132_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,6 +55,36 @@ namespace ElarosApp.Data
                     b.HasKey("AnxietyId");
 
                     b.ToTable("Anxiety");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Breathlessness", b =>
+                {
+                    b.Property<int>("BreathlessnessId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("PostcovidAtRest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostcovidDressing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostcovidWalkingUpStairs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrecovidAtRest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrecovidDressing")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrecovidWalkingUpStairs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BreathlessnessId");
+
+                    b.ToTable("Breathlessness");
                 });
 
             modelBuilder.Entity("ElarosApp.Models.Cognition", b =>
@@ -218,9 +250,6 @@ namespace ElarosApp.Data
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("CurrentQuestionQuestionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
@@ -229,7 +258,7 @@ namespace ElarosApp.Data
 
                     b.HasKey("PatientId");
 
-                    b.HasIndex("CurrentQuestionQuestionId");
+                    b.HasIndex("QuestionId");
 
                     b.ToTable("Patients");
                 });
@@ -286,49 +315,52 @@ namespace ElarosApp.Data
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ActivitiesId")
+                    b.Property<int?>("ActivitiesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AnxietyId")
+                    b.Property<int?>("AnxietyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CognitionId")
+                    b.Property<int?>("BreathlessnessId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CommunicationId")
+                    b.Property<int?>("CognitionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ConsumptionId")
+                    b.Property<int?>("CommunicationId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ContinenceId")
+                    b.Property<int?>("ConsumptionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DepressionId")
+                    b.Property<int?>("ContinenceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FatigueId")
+                    b.Property<int?>("DepressionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MobilityId")
+                    b.Property<int?>("FatigueId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PainId")
+                    b.Property<int?>("MobilityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PersonalCareId")
+                    b.Property<int?>("PainId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PtsdId")
+                    b.Property<int?>("PersonalCareId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PtsdId")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionContent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SocialRoleId")
+                    b.Property<int?>("SocialRoleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VoiceId")
+                    b.Property<int?>("VoiceId")
                         .HasColumnType("int");
 
                     b.HasKey("QuestionId");
@@ -336,6 +368,8 @@ namespace ElarosApp.Data
                     b.HasIndex("ActivitiesId");
 
                     b.HasIndex("AnxietyId");
+
+                    b.HasIndex("BreathlessnessId");
 
                     b.HasIndex("CognitionId");
 
@@ -408,102 +442,82 @@ namespace ElarosApp.Data
 
             modelBuilder.Entity("ElarosApp.Models.PatientModel", b =>
                 {
-                    b.HasOne("ElarosApp.Models.QuestionModel", "CurrentQuestion")
+                    b.HasOne("ElarosApp.Models.QuestionModel", "Question")
                         .WithMany()
-                        .HasForeignKey("CurrentQuestionQuestionId");
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("CurrentQuestion");
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("ElarosApp.Models.QuestionModel", b =>
                 {
                     b.HasOne("ElarosApp.Models.Activities", "Activities")
                         .WithMany()
-                        .HasForeignKey("ActivitiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ActivitiesId");
 
                     b.HasOne("ElarosApp.Models.Anxiety", "Anxiety")
                         .WithMany()
-                        .HasForeignKey("AnxietyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AnxietyId");
+
+                    b.HasOne("ElarosApp.Models.Breathlessness", "Breathlessness")
+                        .WithMany()
+                        .HasForeignKey("BreathlessnessId");
 
                     b.HasOne("ElarosApp.Models.Cognition", "Cognition")
                         .WithMany()
-                        .HasForeignKey("CognitionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CognitionId");
 
                     b.HasOne("ElarosApp.Models.Communication", "Communication")
                         .WithMany()
-                        .HasForeignKey("CommunicationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CommunicationId");
 
                     b.HasOne("ElarosApp.Models.Consumption", "Consumption")
                         .WithMany()
-                        .HasForeignKey("ConsumptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ConsumptionId");
 
                     b.HasOne("ElarosApp.Models.Continence", "Continence")
                         .WithMany()
-                        .HasForeignKey("ContinenceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ContinenceId");
 
                     b.HasOne("ElarosApp.Models.Depression", "Depression")
                         .WithMany()
-                        .HasForeignKey("DepressionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepressionId");
 
                     b.HasOne("ElarosApp.Models.Fatigue", "Fatigue")
                         .WithMany()
-                        .HasForeignKey("FatigueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FatigueId");
 
                     b.HasOne("ElarosApp.Models.Mobility", "Mobility")
                         .WithMany()
-                        .HasForeignKey("MobilityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MobilityId");
 
                     b.HasOne("ElarosApp.Models.Pain", "Pain")
                         .WithMany()
-                        .HasForeignKey("PainId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PainId");
 
                     b.HasOne("ElarosApp.Models.PersonalCare", "PersonalCare")
                         .WithMany()
-                        .HasForeignKey("PersonalCareId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PersonalCareId");
 
                     b.HasOne("ElarosApp.Models.Ptsd", "Ptsd")
                         .WithMany()
-                        .HasForeignKey("PtsdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PtsdId");
 
                     b.HasOne("ElarosApp.Models.SocialRole", "SocialRole")
                         .WithMany()
-                        .HasForeignKey("SocialRoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SocialRoleId");
 
                     b.HasOne("ElarosApp.Models.Voice", "Voice")
                         .WithMany()
-                        .HasForeignKey("VoiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VoiceId");
 
                     b.Navigation("Activities");
 
                     b.Navigation("Anxiety");
+
+                    b.Navigation("Breathlessness");
 
                     b.Navigation("Cognition");
 
