@@ -5,14 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ElarosApp.Models
+namespace ElarosApp.Models 
 {
     public class PatientModel
     {
         [Key]
         public int PatientId { get; set; }
         public string ReferalCode { get; set; }
-        public QuestionModel CurrentQuestion { get; set; }
+        public int CurrentQuestion { get; set; }
         public int QuestionId { get; set; }
+        public QuestionModel Question { get; set; }
     }
 }

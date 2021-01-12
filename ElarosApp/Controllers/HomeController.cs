@@ -11,28 +11,37 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using ElarosApp.Data;
 
 namespace ElarosApp.Controllers
 {
     public class HomeController : Controller
     {
-        // In memory temporary patient code list 
-        private List<string> patientCodeList = new List<string>() { "unggz", "QPbs8", "Tl0vW", "s0lIx", "yXo79" };
-        
+        private readonly DataContext _context;
         private string _referalCode;
+        public HomeController(DataContext context)
+        {
+            _context = context;
+            context.Patients.Count();
+        }
 
         [HttpPost]
         public async Task<ActionResult> Index(string referalCode)
         {
+
             _referalCode = referalCode;
-            if (patientCodeList.Contains(referalCode))
+            var currentPatient = _context.Patients.FirstOrDefault(patient => patient.ReferalCode == referalCode);
+            LoadAllRelationships(currentPatient);
+            
+            if (currentPatient != null)
             {
                 // find ref code from dbctx list of patients and assign to patientModel
+
 
                 // creating cookie
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, _referalCode),
+                    new Claim(ClaimTypes.Name, currentPatient.ReferalCode),
                 };
 
                 var identity = new ClaimsIdentity(
@@ -47,16 +56,36 @@ namespace ElarosApp.Controllers
                 //Response.Cookies.Append("currentQuestion", patientModel.CurrentQuestion.ToString());
 
 
-                return RedirectToPage("/Questions/Index");
+                return View("../Questions/index", currentPatient);
             }
             return Index();
         }
-        
+
+        private void LoadAllRelationships(PatientModel currentPatient)
+        {
+            _context.Entry(currentPatient).Reference(q => q.Question).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Activities).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Anxiety).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Breathlessness).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Cognition).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Communication).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Consumption).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Continence).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Depression).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Fatigue).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Mobility).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Pain).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.PersonalCare).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Ptsd).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.SocialRole).Load();
+            //_context.Entry(currentPatient.Question).Reference(s => s.Voice).Load();
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            if (HttpContext.Request.Cookies["LongCovidAuthCookie"] != null)
-                return View("../Questions/Index");
+            if (Request.Cookies.Keys.Contains("LongCovidPatientAuthCookie"))
+                return View("../Questions/index");
 
             return View("Login", _referalCode);
         }

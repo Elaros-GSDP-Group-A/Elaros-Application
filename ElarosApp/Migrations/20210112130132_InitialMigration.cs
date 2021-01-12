@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ElarosApp.Data
+namespace ElarosApp.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,24 @@ namespace ElarosApp.Data
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Anxiety", x => x.AnxietyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Breathlessness",
+                columns: table => new
+                {
+                    BreathlessnessId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PrecovidAtRest = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrecovidDressing = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrecovidWalkingUpStairs = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostcovidAtRest = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostcovidDressing = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostcovidWalkingUpStairs = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Breathlessness", x => x.BreathlessnessId);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,20 +236,21 @@ namespace ElarosApp.Data
                     QuestionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ActivitiesId = table.Column<int>(type: "int", nullable: false),
-                    AnxietyId = table.Column<int>(type: "int", nullable: false),
-                    CognitionId = table.Column<int>(type: "int", nullable: false),
-                    CommunicationId = table.Column<int>(type: "int", nullable: false),
-                    ConsumptionId = table.Column<int>(type: "int", nullable: false),
-                    ContinenceId = table.Column<int>(type: "int", nullable: false),
-                    DepressionId = table.Column<int>(type: "int", nullable: false),
-                    FatigueId = table.Column<int>(type: "int", nullable: false),
-                    MobilityId = table.Column<int>(type: "int", nullable: false),
-                    PainId = table.Column<int>(type: "int", nullable: false),
-                    PersonalCareId = table.Column<int>(type: "int", nullable: false),
-                    PtsdId = table.Column<int>(type: "int", nullable: false),
-                    SocialRoleId = table.Column<int>(type: "int", nullable: false),
-                    VoiceId = table.Column<int>(type: "int", nullable: false)
+                    ActivitiesId = table.Column<int>(type: "int", nullable: true),
+                    AnxietyId = table.Column<int>(type: "int", nullable: true),
+                    BreathlessnessId = table.Column<int>(type: "int", nullable: true),
+                    CognitionId = table.Column<int>(type: "int", nullable: true),
+                    CommunicationId = table.Column<int>(type: "int", nullable: true),
+                    ConsumptionId = table.Column<int>(type: "int", nullable: true),
+                    ContinenceId = table.Column<int>(type: "int", nullable: true),
+                    DepressionId = table.Column<int>(type: "int", nullable: true),
+                    FatigueId = table.Column<int>(type: "int", nullable: true),
+                    MobilityId = table.Column<int>(type: "int", nullable: true),
+                    PainId = table.Column<int>(type: "int", nullable: true),
+                    PersonalCareId = table.Column<int>(type: "int", nullable: true),
+                    PtsdId = table.Column<int>(type: "int", nullable: true),
+                    SocialRoleId = table.Column<int>(type: "int", nullable: true),
+                    VoiceId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -241,85 +260,91 @@ namespace ElarosApp.Data
                         column: x => x.ActivitiesId,
                         principalTable: "Activities",
                         principalColumn: "ActivitiesId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Anxiety_AnxietyId",
                         column: x => x.AnxietyId,
                         principalTable: "Anxiety",
                         principalColumn: "AnxietyId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Questions_Breathlessness_BreathlessnessId",
+                        column: x => x.BreathlessnessId,
+                        principalTable: "Breathlessness",
+                        principalColumn: "BreathlessnessId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Cognition_CognitionId",
                         column: x => x.CognitionId,
                         principalTable: "Cognition",
                         principalColumn: "CognitionId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Communication_CommunicationId",
                         column: x => x.CommunicationId,
                         principalTable: "Communication",
                         principalColumn: "CommunicationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Consumption_ConsumptionId",
                         column: x => x.ConsumptionId,
                         principalTable: "Consumption",
                         principalColumn: "ConsumptionId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Continence_ContinenceId",
                         column: x => x.ContinenceId,
                         principalTable: "Continence",
                         principalColumn: "ContinenceId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Depression_DepressionId",
                         column: x => x.DepressionId,
                         principalTable: "Depression",
                         principalColumn: "DepressionId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Fatigue_FatigueId",
                         column: x => x.FatigueId,
                         principalTable: "Fatigue",
                         principalColumn: "FatigueId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Mobility_MobilityId",
                         column: x => x.MobilityId,
                         principalTable: "Mobility",
                         principalColumn: "MobilityId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Pain_PainId",
                         column: x => x.PainId,
                         principalTable: "Pain",
                         principalColumn: "PainId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_PersonalCare_PersonalCareId",
                         column: x => x.PersonalCareId,
                         principalTable: "PersonalCare",
                         principalColumn: "PersonalCareId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Ptsd_PtsdId",
                         column: x => x.PtsdId,
                         principalTable: "Ptsd",
                         principalColumn: "PtsdId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_SocialRole_SocialRoleId",
                         column: x => x.SocialRoleId,
                         principalTable: "SocialRole",
                         principalColumn: "SocialRoleId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Questions_Voice_VoiceId",
                         column: x => x.VoiceId,
                         principalTable: "Voice",
                         principalColumn: "VoiceId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -329,24 +354,23 @@ namespace ElarosApp.Data
                     PatientId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ReferalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CurrentQuestionQuestionId = table.Column<int>(type: "int", nullable: true),
                     QuestionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Patients", x => x.PatientId);
                     table.ForeignKey(
-                        name: "FK_Patients_Questions_CurrentQuestionQuestionId",
-                        column: x => x.CurrentQuestionQuestionId,
+                        name: "FK_Patients_Questions_QuestionId",
+                        column: x => x.QuestionId,
                         principalTable: "Questions",
                         principalColumn: "QuestionId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Patients_CurrentQuestionQuestionId",
+                name: "IX_Patients_QuestionId",
                 table: "Patients",
-                column: "CurrentQuestionQuestionId");
+                column: "QuestionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Questions_ActivitiesId",
@@ -357,6 +381,11 @@ namespace ElarosApp.Data
                 name: "IX_Questions_AnxietyId",
                 table: "Questions",
                 column: "AnxietyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Questions_BreathlessnessId",
+                table: "Questions",
+                column: "BreathlessnessId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Questions_CognitionId",
@@ -432,6 +461,9 @@ namespace ElarosApp.Data
 
             migrationBuilder.DropTable(
                 name: "Anxiety");
+
+            migrationBuilder.DropTable(
+                name: "Breathlessness");
 
             migrationBuilder.DropTable(
                 name: "Cognition");
