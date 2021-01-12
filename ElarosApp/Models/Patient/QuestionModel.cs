@@ -10,13 +10,18 @@ namespace ElarosApp.Models
     {
         [Key]
         public int QuestionId { get; set; }
-        
+
         // The actual question context
+
         public string QuestionContent { get; set; }
-        OverallHealth OverallHealth { get; set; }
-        Employment Employment { get; set; }
+        public OverallHealth OverallHealth { get; set; }
+        public Employment Employment { get; set; }
+
 
         // Symptoms that a question could potentitally use
+        public OpeningQuestion OpeningQuestion { get; set; }
+        public int? OpeningQuestionId { get; set; }
+
         public Activities Activities { get; set; }
         public int? ActivitiesId { get; set; }
 

@@ -31,6 +31,10 @@ namespace ElarosApp.Controllers
 
             _referalCode = referalCode;
             var currentPatient = _context.Patients.FirstOrDefault(patient => patient.ReferalCode == referalCode);
+            if (currentPatient == null)
+            {
+                return Index();
+            }
             LoadAllRelationships(currentPatient);
             
             if (currentPatient != null)
@@ -54,7 +58,7 @@ namespace ElarosApp.Controllers
                     props);
 
                 //Response.Cookies.Append("currentQuestion", patientModel.CurrentQuestion.ToString());
-
+                
 
                 return View("../Questions/index", currentPatient);
             }
@@ -85,7 +89,13 @@ namespace ElarosApp.Controllers
         public ActionResult Index()
         {
             if (Request.Cookies.Keys.Contains("LongCovidPatientAuthCookie"))
-                return View("../Questions/index");
+            {
+                PatientModel currentPatient = _context.Patients.FirstOrDefault(p => p.ReferalCode == User.Identity.Name);
+                LoadAllRelationships(currentPatient);
+                return View("../Questions/index", currentPatient);
+            }
+                
+                
 
             return View("Login", _referalCode);
         }

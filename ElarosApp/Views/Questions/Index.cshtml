@@ -1,10 +1,16 @@
 ﻿@model ElarosApp.Models.PatientModel
-@{
-    if (Model.CurrentQuestion == 0)
-        Model.CurrentQuestion = 1; // Sets to the start of the questions if they haven't started previously.
-}
 
-<h1>Question @Model.CurrentQuestion</h1>
+<h1>Question @Model.QuestionId</h1>
 <p>@Model.Question.QuestionContent</p>
+
+<p>
+   
+
+
+
+
+</p>
+
+
 <a asp-action="Logout" asp-controller="Home">Click here to logout</a>
 
