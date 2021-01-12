@@ -1,4 +1,10 @@
-﻿
-<p>You are currently logged in as @User.Identity.Name and you are on question </p>
+﻿@model ElarosApp.Models.PatientModel
+@{
+    if (Model.CurrentQuestion == 0)
+        Model.CurrentQuestion = 1; // Sets to the start of the questions if they haven't started previously.
+}
+
+<h1>Question @Model.CurrentQuestion</h1>
+<p>@Model.Question.QuestionContent</p>
 <a asp-action="Logout" asp-controller="Home">Click here to logout</a>
 

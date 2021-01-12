@@ -16,5 +16,10 @@ namespace ElarosApp.Data
         public DbSet<PatientModel> Patients { get; set; }
         public DbSet<QuestionModel> Questions { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PatientModel>().HasOne(q => q.Question);
+        }
     }
 }

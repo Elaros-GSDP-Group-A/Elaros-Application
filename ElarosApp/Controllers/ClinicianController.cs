@@ -20,6 +20,12 @@ namespace ElarosApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (Request.Cookies.Keys.Contains("ClinicianLoggedIn"))
+            {
+                var formModel = new LoginFormModel() { Email = email, Password = password };
+                return View("Portal", formModel);
+            }
+                
             LoginFormModel = new LoginFormModel();
             return View(LoginFormModel);
         }
@@ -29,7 +35,10 @@ namespace ElarosApp.Controllers
         public ActionResult Index(LoginFormModel formModel)
         {
             if (formModel.Email == email && formModel.Password == password)
+            {
+                Response.Cookies.Append("ClinicianLoggedIn", "True");
                 return View("Portal", formModel);
+            }
             return View(formModel);
         }
     }
