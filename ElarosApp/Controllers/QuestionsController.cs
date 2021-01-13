@@ -13,6 +13,7 @@ namespace ElarosApp.Controllers
         private readonly DataContext _context;
         private PatientModel patient;
         public static string PatientName;
+        private static string isQuestionnaireFinished;
 
         public QuestionsController(DataContext context)
         {
@@ -23,6 +24,12 @@ namespace ElarosApp.Controllers
         [HttpGet]
         public IActionResult Index(PatientModel tmpPatient)
         {
+            if (tmpPatient.QuestionId != 18)
+                isQuestionnaireFinished = "false";
+
+            if (isQuestionnaireFinished == "true")
+                return View("QuestionnaireFinished", patient);
+
             var tmptmpPatient = _context.Patients.FirstOrDefault(p => p.ReferalCode == tmpPatient.ReferalCode);
             PatientName = tmptmpPatient.ReferalCode;
 
@@ -39,7 +46,17 @@ namespace ElarosApp.Controllers
             if (submitButton == "PreviousQuestion")
                 return PreviousQuestion();
 
+            if (submitButton == "SubmitQuestionnaire")
+                return SubmitQuestionnaire();
+
             return RedirectToAction("Index", patient);
+        }
+
+        private IActionResult SubmitQuestionnaire()
+        {
+            isQuestionnaireFinished = "true";
+            HttpContext.Response.Cookies.Delete("LongCovidPatientAuthCookie");
+            return RedirectToAction("Index", "Home");
         }
 
         private IActionResult NextQuestion()
