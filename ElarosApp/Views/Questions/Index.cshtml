@@ -12,10 +12,12 @@ else
     <p>QuestionContent is null</p>
 }
 
-    <form method="post" asp-controller="Questions" asp-action="NextQuestion">
 
-        <button type="submit" class="btn btn-lg btn-primary">Next Question</button>
-    </form>
+<form method="post" asp-controller="Questions" asp-action="OnPost">
+
+    <button type="submit" class="btn btn-lg btn-primary" name="submitButton" value="PreviousQuestion">Previous Question</button>
+    <button type="submit" class="btn btn-lg btn-primary" name="submitButton" value="NextQuestion">Next Question</button>
+</form>
 
 
 <a asp-action="Logout" asp-controller="Home">Click here to logout</a>

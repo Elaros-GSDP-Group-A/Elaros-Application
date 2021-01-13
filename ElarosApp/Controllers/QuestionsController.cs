@@ -18,7 +18,6 @@ namespace ElarosApp.Controllers
         {
             _context = context;
             patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == PatientName);
-            
         }
 
         [HttpGet]
@@ -32,10 +31,33 @@ namespace ElarosApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult NextQuestion()
+        public IActionResult OnPost(string submitButton)
+        {
+            if (submitButton == "NextQuestion")
+               return NextQuestion();
+
+            if (submitButton == "PreviousQuestion")
+                return PreviousQuestion();
+
+            return RedirectToAction("Index", patient);
+        }
+
+        private IActionResult NextQuestion()
         {
             patient.QuestionId++;
-            return Index(patient);
+            _context.SaveChanges();
+            return RedirectToAction("Index", patient);
+        }
+
+        private IActionResult PreviousQuestion()
+        {
+            if(patient.QuestionId > 1)
+            {
+                patient.QuestionId--;
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index", patient);
         }
 
         public void MakeRelationships(PatientModel currentPatient)
