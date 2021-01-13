@@ -26,7 +26,7 @@ namespace ElarosApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(string referalCode)
+        public async Task<ActionResult> OnPost(string referalCode)
         {
 
             _referalCode = referalCode;
@@ -65,7 +65,6 @@ namespace ElarosApp.Controllers
             return Index();
         }
 
-        
 
         [HttpGet]
         public ActionResult Index()
@@ -76,12 +75,11 @@ namespace ElarosApp.Controllers
                 //MakeRelationships(currentPatient);
                 return RedirectToAction("Index", "Questions", currentPatient);
             }
-                
-                
 
             return View("Login", _referalCode);
         }
 
+      
         public void MakeRelationships(PatientModel currentPatient)
         {
             _context.Entry(currentPatient).Reference(q => q.Question).Load();
