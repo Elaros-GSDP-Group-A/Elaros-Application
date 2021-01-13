@@ -1,10 +1,24 @@
 ﻿@model ElarosApp.Models.PatientModel
-@{
-    if (Model.CurrentQuestion == 0)
-        Model.CurrentQuestion = 1; // Sets to the start of the questions if they haven't started previously.
+Logged in as: @Model.ReferalCode
+
+@if (Model.Question != null)
+{
+    <h1>Question @Model.QuestionId</h1>
+    <p>@Model.Question.QuestionContent</p>
+}
+else
+{
+    <h1>QuestionId is null</h1>
+    <p>QuestionContent is null</p>
 }
 
-<h1>Question @Model.CurrentQuestion</h1>
-<p>@Model.Question.QuestionContent</p>
+
+<form method="post" asp-controller="Questions" asp-action="OnPost">
+
+    <button type="submit" class="btn btn-lg btn-primary" name="submitButton" value="PreviousQuestion">Previous Question</button>
+    <button type="submit" class="btn btn-lg btn-primary" name="submitButton" value="NextQuestion">Next Question</button>
+</form>
+
+
 <a asp-action="Logout" asp-controller="Home">Click here to logout</a>
 

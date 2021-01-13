@@ -12,7 +12,6 @@ namespace ElarosApp.Models
         [Key]
         public int PatientId { get; set; }
         public string ReferalCode { get; set; }
-        public int CurrentQuestion { get; set; }
         public int QuestionId { get; set; }
         public QuestionModel Question { get; set; }
     }

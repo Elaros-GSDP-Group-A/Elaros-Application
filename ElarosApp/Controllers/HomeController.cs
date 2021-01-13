@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using ElarosApp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElarosApp.Controllers
 {
@@ -22,7 +23,6 @@ namespace ElarosApp.Controllers
         public HomeController(DataContext context)
         {
             _context = context;
-            context.Patients.Count();
         }
 
         [HttpPost]
@@ -31,8 +31,12 @@ namespace ElarosApp.Controllers
 
             _referalCode = referalCode;
             var currentPatient = _context.Patients.FirstOrDefault(patient => patient.ReferalCode == referalCode);
-            LoadAllRelationships(currentPatient);
-            
+            if (currentPatient == null)
+            {
+                return Index();
+            }
+            //MakeRelationships(currentPatient);
+
             if (currentPatient != null)
             {
                 // find ref code from dbctx list of patients and assign to patientModel
@@ -55,13 +59,30 @@ namespace ElarosApp.Controllers
 
                 //Response.Cookies.Append("currentQuestion", patientModel.CurrentQuestion.ToString());
 
-
-                return View("../Questions/index", currentPatient);
+               
+                return RedirectToAction("Index", "Questions", currentPatient);
             }
             return Index();
         }
 
-        private void LoadAllRelationships(PatientModel currentPatient)
+        
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            if (Request.Cookies.Keys.Contains("LongCovidPatientAuthCookie"))
+            {
+                PatientModel currentPatient = _context.Patients.FirstOrDefault(p => p.ReferalCode == User.Identity.Name);
+                //MakeRelationships(currentPatient);
+                return RedirectToAction("Index", "Questions", currentPatient);
+            }
+                
+                
+
+            return View("Login", _referalCode);
+        }
+
+        public void MakeRelationships(PatientModel currentPatient)
         {
             _context.Entry(currentPatient).Reference(q => q.Question).Load();
             //_context.Entry(currentPatient.Question).Reference(s => s.Activities).Load();
@@ -79,15 +100,6 @@ namespace ElarosApp.Controllers
             //_context.Entry(currentPatient.Question).Reference(s => s.Ptsd).Load();
             //_context.Entry(currentPatient.Question).Reference(s => s.SocialRole).Load();
             //_context.Entry(currentPatient.Question).Reference(s => s.Voice).Load();
-        }
-
-        [HttpGet]
-        public ActionResult Index()
-        {
-            if (Request.Cookies.Keys.Contains("LongCovidPatientAuthCookie"))
-                return View("../Questions/index");
-
-            return View("Login", _referalCode);
         }
 
         public async Task<IActionResult> Logout()
