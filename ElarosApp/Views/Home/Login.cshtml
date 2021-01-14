@@ -25,22 +25,19 @@
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <div class="fadeIn first">
-                <br>	<br>
-                <div class="row">
-                    <div class="col-12">
-                        <img src="~/images/elaros logo.png" />
-                    </div>
+                <div class="justify-content-center" id="elarosImage"> <span class="align-text-bottom" style="position:relative; top: 50px; left:22px; text-align:center;"><b>Long-Covid Questionnaire:</b></span></div>
+                <div class="row justify-content-center">
                     <div class="col">
                         <form asp-action="OnPost" asp-controller="Home" method="post">
                             <div class="form-group">
                                 <label class="text-muted">Referal Code: </label>
                                 <input type="text" value="" id="referalCode" name="referalCode" placeholder="A5j2iX" class="fadeIn second" /><br />
                                 @if (!string.IsNullOrEmpty(Model) && Model != "true")
-                                                        {
-                                <small class="form-text mb-3 text-danger">@Model is not a valid referal code. If this is a mistake please contact your Clinician about this.</small> }
-                                                        else
-                                                        {
-                                <small class="form-text mb-3">You must enter this exactly as it is in your email.</small>}
+                                {
+                                    <small class="form-text mb-3 text-danger">@Model is not a valid referal code. If this is a mistake please contact your Clinician about this.</small> }
+                                else
+                                {
+                                    <small class="form-text mb-3">You must enter this exactly as it is in your email.</small>}
                                 <button type="submit" class="btn btn-lg btn-primary">Start Questionnaire</button>
                             </div>
                         </form>
