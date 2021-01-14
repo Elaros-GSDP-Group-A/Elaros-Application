@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ElarosApp.Models.Clinician;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ElarosApp.Controllers
@@ -36,7 +37,11 @@ namespace ElarosApp.Controllers
         {
             if (formModel.Email == email && formModel.Password == password)
             {
-                Response.Cookies.Append("ClinicianLoggedIn", "True");
+                Response.Cookies.Append("ClinicianLoggedIn", "True", new CookieOptions()
+                {
+                    Expires = DateTime.UtcNow.AddMinutes(5)
+                });
+                
                 return View("Portal", formModel);
             }
             return View(formModel);
