@@ -17,6 +17,7 @@ namespace ElarosApp.Controllers
         public QuestionsController(DataContext context)
         {
             _context = context;
+            patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == PatientName);
         }
 
         [HttpGet]
