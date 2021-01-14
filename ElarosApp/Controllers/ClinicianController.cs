@@ -37,7 +37,10 @@ namespace ElarosApp.Controllers
         {
             if (formModel.Email == email && formModel.Password == password)
             {
-                Response.Cookies.Append("ClinicianLoggedIn", "True");
+                Response.Cookies.Append("ClinicianLoggedIn", "True", new CookieOptions()
+                {
+                    Expires = DateTime.UtcNow.AddMinutes(5)
+                });
                 return View("Portal", formModel);
             }
             return View(formModel);
