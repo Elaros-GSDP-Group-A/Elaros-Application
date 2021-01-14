@@ -14,5 +14,6 @@ namespace ElarosApp.Models
         public string ReferalCode { get; set; }
         public int QuestionId { get; set; }
         public QuestionModel Question { get; set; }
+        public bool FinishedQuestionniare { get; set; } = false;
     }
 }

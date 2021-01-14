@@ -37,14 +37,16 @@ namespace ElarosApp.Controllers
         {
             if (formModel.Email == email && formModel.Password == password)
             {
-                Response.Cookies.Append("ClinicianLoggedIn", "True", new CookieOptions()
-                {
-                    Expires = DateTime.UtcNow.AddMinutes(5)
-                });
-                
+                Response.Cookies.Append("ClinicianLoggedIn", "True");
                 return View("Portal", formModel);
             }
             return View(formModel);
+        }
+
+        public async Task<IActionResult> LogoutClinician()
+        {
+            Response.Cookies.Delete("ClinicianLoggedIn");
+            return RedirectToAction("Index");
         }
     }
 }
