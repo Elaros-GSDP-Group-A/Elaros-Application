@@ -5,53 +5,24 @@
     <strong>Disclaimer:</strong> By completing this questionnaire you consent for us to use the data in audit and research.
 </div>
 
-            <!doctype html>
+<div class="text-center">
+    <h1 class="display-4">Please enter your referal code </h1>
+    <p>This will be in your email inbox once your clinician has referred you...</p>
 
-                        <html lang="en">
-                        <head>
-                            <!-- Required meta tags -->
-                            <meta charset="utf-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1">
+    <form asp-action="OnPost" asp-controller="Home" method="post">
+        <div class="form-group">
+            <label class="text-muted">Referal Code: </label>
+            <input type="text" value="" id="referalCode" name="referalCode" placeholder="A5j2iX" class="my-2" /><br />
+            @if (!string.IsNullOrEmpty(Model) && Model != "true")
+            {
+                <small class="form-text mb-3 text-danger">@Model is not a valid referal code. If this is a mistake please contact your Clinician about this.</small>
+            }
+            else
+            {
+                <small class="form-text mb-3">You must enter this exactly as it is in your email.</small>
+            }
+            <button type="submit" class="btn btn-lg btn-primary">Start Questionnaire</button>
+        </div>
+    </form>
+</div>
 
-                            <!-- Bootstrap CSS -->
-                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-                            <title>Patient Login</title>
-                        </head>
-
-                        <body class="bg-light">
-
-                            <div class="wrapper fadeInDown">
-                                <div id="formContent">
-                                    <div class="fadeIn first">
-                                        <br>	<br>
-                                        <div class="row">
-                                            <div class="col">
-                                                <img src="~/images/Elaros.png">
-                                            </div>
-                                            <div class="col">
-                                                <form asp-action="OnPost" asp-controller="Home" method="post">
-                                                    <div class="form-group">
-                                                        <label class="text-muted">Referal Code: </label>
-                                                        <input type="text" value="" id="referalCode" name="referalCode" placeholder="A5j2iX" class="fadeIn second" /><br />
-                                                        @if (!string.IsNullOrEmpty(Model) && Model != "true")
-                                                        {
-                                            <small class="form-text mb-3 text-danger">@Model is not a valid referal code. If this is a mistake please contact your Clinician about this.</small> }
-                                                        else
-                                                        {
-                                            <small class="form-text mb-3">You must enter this exactly as it is in your email.</small>}
-                                                        <button type="submit" class="btn btn-lg btn-primary">Start Questionnaire</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <br> <br> <br> <br>
-
-                                    <!--====================================FOOTER==============================================-->
-
-
-                        </body>
-                    </html>

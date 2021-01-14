@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElarosApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210114143844_UpToDateDatabase")]
-    partial class UpToDateDatabase
+    [Migration("20210114152125_UpdatePatientModel")]
+    partial class UpdatePatientModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -324,6 +324,9 @@ namespace ElarosApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<bool>("FinishedQuestionniare")
+                        .HasColumnType("bit");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");

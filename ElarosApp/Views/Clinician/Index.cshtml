@@ -2,34 +2,17 @@
 @{
     Layout = "_LayoutClinician";
 }
-<body class="bg-light">
-
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <div class="fadeIn first">
-                <br>	<br>
-                <div class="row">
-                    <div class="col">
-                        <img src="~/images/Elaros.png">
-                    </div>
-                    <div class="col">
-                        <form class="col-12 col-md-6 offset-md-3 col-xl-3 offset-xl-1" method="post">
-                            <div class="form-group">
-                                <label asp-for="Email" class="text-muted">Email:</label>
-                                <input asp-for="Email" type="email" placeholder="Clinician@Mail.com" class="form-control form-control-sm" />
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Password" class="text-muted">Password:</label>
-                                <input asp-for="Password" type="password" placeholder="**" class="form-control form-control-sm" />
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-sm btn-block">Login</button>
-
-                        </form>
-                    </div>
-
-                </div>
+    <div class="row">
+        <form class="col-12 col-md-6 offset-md-3 col-xl-3 offset-xl-1" method="post">   
+            <div class="form-group">
+                <label asp-for="Email" class="text-muted">Email:</label>
+                <input asp-for="Email" type="email" placeholder="Clinician@Mail.com" class="form-control form-control-sm" />
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Password" class="text-muted">Password:</label>
+                <input asp-for="Password" type="password" placeholder="********" class="form-control form-control-sm" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm btn-block">Login</button>
+
+        </form>
     </div>
-    <br> <br> <br> <br>
-</body>
