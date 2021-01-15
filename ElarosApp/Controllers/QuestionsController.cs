@@ -11,23 +11,26 @@ namespace ElarosApp.Controllers
     public class QuestionsController : Controller
     {
         private readonly DataContext _context;
-        private PatientModel patient;
-        public static string PatientName;
+        private static PatientModel patient;
+        private static string patientName;
 
         public QuestionsController(DataContext context)
         {
             _context = context;
-            patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == PatientName);
+            patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
         }
 
         [HttpGet]
-        public IActionResult Index(PatientModel tmpPatient)
+        public IActionResult Index(PatientModel P)
         {
-            var tmptmpPatient = _context.Patients.FirstOrDefault(p => p.ReferalCode == tmpPatient.ReferalCode);
-            PatientName = tmptmpPatient.ReferalCode;
+            var patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == P.ReferalCode);
+            patientName = patient.ReferalCode;
 
-            MakeRelationships(tmptmpPatient);
-            return View("Index", tmptmpPatient);
+            if (patient.FinishedQuestionniare == true)
+                return View("QuestionnaireFinished", patient);
+
+            MakeRelationships(patient);
+            return View("Index", patient);
         }
 
         [HttpPost]
@@ -39,7 +42,18 @@ namespace ElarosApp.Controllers
             if (submitButton == "PreviousQuestion")
                 return PreviousQuestion();
 
+            if (submitButton == "SubmitQuestionnaire")
+                return SubmitQuestionnaire();
+
             return RedirectToAction("Index", patient);
+        }
+
+        private IActionResult SubmitQuestionnaire()
+        {
+            patient.FinishedQuestionniare = true;
+            HttpContext.Response.Cookies.Delete("LongCovidPatientAuthCookie");
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
         private IActionResult NextQuestion()

@@ -1,24 +1,170 @@
 ﻿@model ElarosApp.Models.PatientModel
-Logged in as: @Model.ReferalCode
+
+
+<span class="text-secondary p-1 small">Logged in as: <span class="text-success">@Model.ReferalCode</span></span>
 
 @if (Model.Question != null)
 {
-    <h1>Question @Model.QuestionId</h1>
-    <p>@Model.Question.QuestionContent</p>
+    <h1 class="text-left display-4 bg-light text-secondary pb-1 pt-1 px-3 font-italic">Question - @Model.QuestionId:</h1>
 }
 else
 {
-    <h1>QuestionId is null</h1>
-    <p>QuestionContent is null</p>
+    <h1 class="text-left display-4">Null Question:</h1>
 }
 
+<div class="container">
+    <div class="row position-relative m-4">
+        <div class="col-12">
+            <div class="progress progress-bar-striped active" style="height: 25px;">
+                @{int barValue = (int)Math.Round((((double)Model.QuestionId / 18.0) * 100), 0);}
+                <div class="progress-bar progress-bar-animated progress-bar-striped active bg-success box-shadow" id="ProgresBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: @barValue%;"><span class="lead font-weight-bold text-light">@barValue%</span></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<form method="post" asp-controller="Questions" asp-action="OnPost">
 
-    <button type="submit" class="btn btn-lg btn-primary" name="submitButton" value="PreviousQuestion">Previous Question</button>
-    <button type="submit" class="btn btn-lg btn-primary" name="submitButton" value="NextQuestion">Next Question</button>
-</form>
+<div class="container">
+    <form method="post" asp-controller="Questions" asp-action="OnPost">
+
+        <div class="container text-center">
+
+            @if (Model.Question != null)
+            {
+
+                <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
+            }
+            else
+            {
+                <h1>QuestionId is null</h1>
+                <p>QuestionContent is null</p>
+            }
+
+            @{
+                switch (Model.QuestionId)
+                {
+
+                    case 1:
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <label class="form-check-label" for="inlineRadio3">Rather Not Say</label>
+                        </div>
+                        <br />
+                        <div class="form-group col-12 mt-3">
+                            <label for="Textarea1" class="lead font-weight-bold">If yes, please elabroate further if you are comfortable doing so:</label>
+                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                        </div>
+                        break;
+                    case 2:
+                        // html for form on question 1
+                        break;
+                    case 3:
+                        // html for form on question 1
+                        break;
+                    case 4:
+                        // html for form on question 1
+                        break;
+                    case 5:
+                        // html for form on question 1
+                        break;
+                    case 6:
+                        // html for form on question 1
+                        break;
+                    case 7:
+                        // html for form on question 1
+                        break;
+                    case 8:
+                        // html for form on question 1
+                        break;
+                    case 9:
+                        // html for form on question 1
+                        break;
+                    case 10:
+                        // html for form on question 1
+                        break;
+                    case 11:
+                        // html for form on question 1
+                        break;
+                    case 12:
+                        // html for form on question 1
+                        break;
+                    case 13:
+                        // html for form on question 1
+                        break;
+                    case 14:
+                        // html for form on question 1
+                        break;
+                    case 15:
+                        // html for form on question 1
+                        break;
+                    case 16:
+                        // html for form on question 1
+                        break;
+                    case 17:
+                        // html for form on question 1
+                        break;
+                    case 18:
+                        // html for form on question 1
+                        break;
+                }
+            }
 
 
-<a asp-action="Logout" asp-controller="Home">Click here to logout</a>
+
+
+            @*<br />
+        <br />
+        <br />
+        <span class="font-italic">*Blank space left for the answer section*</span><br />
+        <br />
+        <br />
+        <br />*@
+
+            <div class="row justify-content-around">
+
+                <button type="submit" class="btn btn-sm btn-outline-secondary" name="submitButton" value="PreviousQuestion">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                    </svg> Previous Question
+                </button>
+
+
+                <a asp-action="Logout" asp-controller="Home" class="btn btn-danger px-5 btn-sm">Logout</a>
+
+                @if (Model.QuestionId == 18)
+                {
+                    <button type="submit" class="btn btn-sm btn-outline-primary" name="submitButton" value="SubmitQuestionnaire" onclick="CompletedForm()">
+                        Submit Questionnaire
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        </svg>
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-sm btn-outline-primary" name="submitButton" value="NextQuestion">
+                        Next Question
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        </svg>
+                    </button>
+                }
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/CompleteForm.js"></script>
 
