@@ -31,8 +31,10 @@ else
 
             @if (Model.Question != null)
             {
-
-                <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
+                if(!String.IsNullOrEmpty(Model.Question.QuestionContent))
+                {
+                    <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
+                }
             }
             else
             {
@@ -66,7 +68,9 @@ else
                         </div>
                         break;
                     case 2:
-                        // html for form on question 1
+                        
+                        //
+
                         break;
                     case 3:
                         // html for form on question 1
