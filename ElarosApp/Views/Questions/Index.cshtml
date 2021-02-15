@@ -32,7 +32,14 @@ else
             @if (Model.Question != null)
             {
 
+
                 <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
+
+                if(!String.IsNullOrEmpty(Model.Question.QuestionContent))
+                {
+                    <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
+                }
+
             }
             else
             {
@@ -55,6 +62,11 @@ else
                             <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
 
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                            <label class="form-check-label" for="inlineRadio3">Rather Not Say</label>
+                        </div>
+
                         <br />
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">If yes, please elabroate further if you are comfortable doing so:</label>
@@ -62,6 +74,7 @@ else
                         </div>
                         break;
                     case 2:
+
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                             <label class="form-check-label" for="inlineRadio1">Yes</label>
@@ -1038,6 +1051,7 @@ else
                             <label for="Textarea1" class="lead font-weight-bold">Any other discussion (clinical notes):</label>
                             <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
+                        
                         break;
                 }
             }

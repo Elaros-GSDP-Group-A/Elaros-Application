@@ -41,12 +41,12 @@ namespace ElarosApp.Controllers
                 {
                     Expires = DateTime.UtcNow.AddMinutes(5)
                 });
-                return View("Portal", formModel);
+                return RedirectToAction("Index", "Portal", formModel);
             }
             return View(formModel);
         }
 
-        public async Task<IActionResult> LogoutClinician()
+        public IActionResult LogoutClinician()
         {
             Response.Cookies.Delete("ClinicianLoggedIn");
             return RedirectToAction("Index");
