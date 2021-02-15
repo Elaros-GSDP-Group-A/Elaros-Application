@@ -1,0 +1,186 @@
+﻿
+<div class="alert alert-warning" role="alert">
+    <strong>Disclaimer:</strong> By completing this questionnaire you consent for us to use the data in audit and research.
+</div>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+    <body>
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first Graph</a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second Graph</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle Third Graph</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2 multiCollapseExample3">Toggle all graphs</button>
+        </p>
+    <div>
+        <div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                    <div class="card card-body">
+                        <div id="chart_div1" style="width: 900px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                    <div class="card card-body">
+                        <div id="chart_div2" style="width: 900px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample3">
+                    <div class="card card-body">
+                        <div id="chart_div3" style="width: 900px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Optional JavaScript; choose one of the two! -->
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', { packages: ['corechart', 'bar'] });
+            google.charts.setOnLoadCallback(drawStacked);
+
+
+            function drawStacked() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Symptom', 'Pre-Covid', 'Covid'],
+                    ['Breathlessness', 1, 5],
+                    ['Cough', 2, 6],
+                    ['Nutrition', 5, 4],
+                    ['Fatigue', 3, 6],
+                    ['Continence', 2, 3],
+                    ['Pain/Discomfort', 6, 6],
+                    ['Cognition', 2, 3],
+                    ['Anxiety', 3, 5],
+                    ['Depression', 3, 6],
+                    ['PTSD screening', 2, 3],
+                ]);
+
+                var options = {
+                    title: 'Symptoms Severity Score',
+                    chartArea: { width: '50%' },
+                    isStacked: true,
+                    hAxis: {
+                        title: 'Score',
+                        minValue: 0,
+                    },
+                    vAxis: {
+                        title: 'Symptoms'
+                    }
+                };
+                var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
+                chart.draw(data, options);
+            }
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Breathlessness', 'Cough'],
+                    [1, 8],
+                    [2, 7],
+                    [5, 7],
+                    [2, 8],
+                    [3, 5],
+                    [6, 7]
+                ]);
+
+                var options = {
+                    title: 'Breathlessness vs. Cough',
+                    hAxis: { title: 'Breathlessness', minValue: 0, maxValue: 10 },
+                    vAxis: { title: 'Cough', minValue: 0, maxValue: 10 },
+                    legend: 'none'
+                };
+
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
+
+                chart.draw(data, options);
+            }
+            google.charts.load('current', { 'packages': ['corechart', 'bar'] });
+            google.charts.setOnLoadCallback(drawStuff);
+            function drawStuff() {
+
+                var button = document.getElementById('change-chart');
+                var chartDiv = document.getElementById('chart_div3');
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Symptoms', 'Pre-Covid', 'Covid'],
+                    ['Breathlessness', 1, 5],
+                    ['Cough', 2, 6],
+                    ['Nutrition', 5, 4],
+                    ['Fatigue', 3, 6],
+                    ['Continence', 2, 3],
+                    ['Pain', 6, 6],
+                    ['Cognition', 2, 3],
+                    ['Anxiety', 3, 5],
+                    ['Depression', 3, 6],
+                    ['PTSD', 2, 3],
+                ]);
+
+                var materialOptions = {
+                    width: 900,
+                    chart: {
+                        title: '',
+                        subtitle: ''
+                    },
+                    series: {
+                        0: { axis: 'score' }, // Bind series 0 to an axis named ''.
+                        1: { axis: 'score' } // Bind series 1 to an axis named ''.
+                    },
+                    axes: {
+                        y: {
+                            distance: { label: 'score' }, // Left y-axis.
+
+                        }
+                    }
+                };
+
+                var classicOptions = {
+                    width: 900,
+                    series: {
+                        0: { targetAxisIndex: 0 },
+                        1: { targetAxisIndex: 1 }
+                    },
+                    title: '',
+                    vAxes: {
+                        // Adds titles to each axis.
+                        0: { title: 'score' },
+
+                    }
+                };
+
+                function drawMaterialChart() {
+                    var materialChart = new google.charts.Bar(chartDiv);
+                    materialChart.draw(data, google.charts.Bar.convertOptions(materialOptions));
+                    button.innerText = 'Change to Classic';
+                    button.onclick = drawClassicChart;
+                }
+
+                function drawClassicChart() {
+                    var classicChart = new google.visualization.ColumnChart(chart_div3);
+                    classicChart.draw(data, classicOptions);
+                    button.innerText = 'Change to Material';
+                    button.onclick = drawMaterialChart;
+                }
+
+                drawMaterialChart();
+            };
+        </script>
+
+        <!--   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script> -->
+
+    </body>
+    </html>
