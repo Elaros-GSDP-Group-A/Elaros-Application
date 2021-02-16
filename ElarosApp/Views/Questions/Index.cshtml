@@ -16,7 +16,7 @@ else
     <div class="row position-relative m-4">
         <div class="col-12">
             <div class="progress progress-bar-striped active" style="height: 25px;">
-                @{int barValue = (int)Math.Round((((double)Model.QuestionId / 18.0) * 100), 0);}
+                @{int barValue = (int)Math.Round((((double)Model.QuestionId / 19.0) * 100), 0);}
                 <div class="progress-bar progress-bar-animated progress-bar-striped active bg-success box-shadow" id="ProgresBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: @barValue%;"><span class="lead font-weight-bold text-light">@barValue%</span></div>
             </div>
         </div>
@@ -31,11 +31,12 @@ else
 
             @if (Model.Question != null)
             {
-                if (!String.IsNullOrEmpty(Model.Question.QuestionContent))
+
+                if(!String.IsNullOrEmpty(Model.Question.QuestionContent))
+
                 {
                     <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
                 }
-
             }
             else
             {
@@ -59,11 +60,6 @@ else
                             <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
 
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                            <label class="form-check-label" for="inlineRadio3">Rather Not Say</label>
-                        </div>
-
                         <br />
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">If yes, please elabroate further if you are comfortable doing so:</label>
@@ -71,7 +67,6 @@ else
                         </div>
                         break;
                     case 2:
-
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                             <label class="form-check-label" for="inlineRadio1">Yes</label>
@@ -1048,7 +1043,6 @@ else
                             <label for="Textarea1" class="lead font-weight-bold">Any other discussion (clinical notes):</label>
                             <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
-                        
                         break;
                 }
             }
@@ -1075,7 +1069,7 @@ else
 
                 <a asp-action="Logout" asp-controller="Home" class="btn btn-danger px-5 btn-sm">Logout</a>
 
-                @if (Model.QuestionId == 18)
+                @if (Model.QuestionId == 19)
                 {
                     <button type="submit" class="btn btn-sm btn-outline-primary" name="submitButton" value="SubmitQuestionnaire" onclick="CompletedForm()">
                         Submit Questionnaire

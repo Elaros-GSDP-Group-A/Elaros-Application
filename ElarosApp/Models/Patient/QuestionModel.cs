@@ -15,7 +15,9 @@ namespace ElarosApp.Models
 
         public string QuestionContent { get; set; }
         public ICollection<OverallHealth> OverallHealth { get; set; }
+      
         public int? OverallHealthId{ get; set; }
+
 
         public ICollection<Employment> Employment { get; set; }
         public int? EmploymentId { get; set; }
