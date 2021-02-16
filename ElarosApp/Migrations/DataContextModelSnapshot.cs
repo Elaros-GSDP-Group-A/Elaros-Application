@@ -32,7 +32,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("ActivitiesId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Activities");
                 });
@@ -50,7 +55,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("AnxietyId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Anxiety");
                 });
@@ -80,7 +90,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("PrecovidWalkingUpStairs")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("BreathlessnessId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Breathlessness");
                 });
@@ -95,6 +110,9 @@ namespace ElarosApp.Migrations
                     b.Property<bool?>("DifficultyConcentrating")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Severity")
                         .HasColumnType("nvarchar(max)");
 
@@ -102,6 +120,8 @@ namespace ElarosApp.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("CognitionId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Cognition");
                 });
@@ -116,10 +136,15 @@ namespace ElarosApp.Migrations
                     b.Property<bool?>("DifficultyCommunicating")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Severity")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CommunicationId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Communication");
                 });
@@ -134,6 +159,9 @@ namespace ElarosApp.Migrations
                     b.Property<bool?>("DifficultySwallowing")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Severity")
                         .HasColumnType("nvarchar(max)");
 
@@ -141,6 +169,8 @@ namespace ElarosApp.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("ConsumptionId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Consumption");
                 });
@@ -158,10 +188,15 @@ namespace ElarosApp.Migrations
                     b.Property<bool?>("BowelProblems")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Severity")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ContinenceId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Continence");
                 });
@@ -179,14 +214,19 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("DepressionId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Depression");
                 });
 
             modelBuilder.Entity("ElarosApp.Models.Employment", b =>
                 {
-                    b.Property<int>("ActivitiesId")
+                    b.Property<int>("EmploymentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -209,10 +249,15 @@ namespace ElarosApp.Migrations
                     b.Property<string>("OtherClinicalNotes")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UnmentionedProblemsPostCovid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ActivitiesId");
+                    b.HasKey("EmploymentId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Employment");
                 });
@@ -230,7 +275,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("FatigueId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Fatigue");
                 });
@@ -248,7 +298,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("MobilityId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Mobility");
                 });
@@ -272,7 +327,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("MedicalProblemsDetails")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("OpeningQuestionId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("OpeningQuestion");
                 });
@@ -290,7 +350,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("OverallHealthId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("OverallHealth");
                 });
@@ -311,7 +376,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("PainId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Pain");
                 });
@@ -352,7 +422,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("PersonalCareId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("PersonalCare");
                 });
@@ -363,6 +438,9 @@ namespace ElarosApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("SelfharmThoughts")
                         .HasColumnType("bit");
@@ -380,6 +458,8 @@ namespace ElarosApp.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("PtsdId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Ptsd");
                 });
@@ -415,7 +495,7 @@ namespace ElarosApp.Migrations
                     b.Property<int?>("DepressionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmploymentActivitiesId")
+                    b.Property<int?>("EmploymentId")
                         .HasColumnType("int");
 
                     b.Property<int?>("FatigueId")
@@ -450,42 +530,6 @@ namespace ElarosApp.Migrations
 
                     b.HasKey("QuestionId");
 
-                    b.HasIndex("ActivitiesId");
-
-                    b.HasIndex("AnxietyId");
-
-                    b.HasIndex("BreathlessnessId");
-
-                    b.HasIndex("CognitionId");
-
-                    b.HasIndex("CommunicationId");
-
-                    b.HasIndex("ConsumptionId");
-
-                    b.HasIndex("ContinenceId");
-
-                    b.HasIndex("DepressionId");
-
-                    b.HasIndex("EmploymentActivitiesId");
-
-                    b.HasIndex("FatigueId");
-
-                    b.HasIndex("MobilityId");
-
-                    b.HasIndex("OpeningQuestionId");
-
-                    b.HasIndex("OverallHealthId");
-
-                    b.HasIndex("PainId");
-
-                    b.HasIndex("PersonalCareId");
-
-                    b.HasIndex("PtsdId");
-
-                    b.HasIndex("SocialRoleId");
-
-                    b.HasIndex("VoiceId");
-
                     b.ToTable("Questions");
                 });
 
@@ -502,7 +546,12 @@ namespace ElarosApp.Migrations
                     b.Property<string>("Precovid")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.HasKey("SocialRoleId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("SocialRole");
                 });
@@ -517,6 +566,9 @@ namespace ElarosApp.Migrations
                     b.Property<bool?>("NoiseyBreathing")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("QuestionModelQuestionId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Severity")
                         .HasColumnType("nvarchar(max)");
 
@@ -528,7 +580,107 @@ namespace ElarosApp.Migrations
 
                     b.HasKey("VoiceId");
 
+                    b.HasIndex("QuestionModelQuestionId");
+
                     b.ToTable("Voice");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Activities", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Activities")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Anxiety", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Anxiety")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Breathlessness", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Breathlessness")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Cognition", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Cognition")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Communication", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Communication")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Consumption", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Consumption")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Continence", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Continence")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Depression", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Depression")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Employment", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Employment")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Fatigue", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Fatigue")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Mobility", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Mobility")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.OpeningQuestion", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("OpeningQuestion")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.OverallHealth", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("OverallHealth")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Pain", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Pain")
+                        .HasForeignKey("QuestionModelQuestionId");
                 });
 
             modelBuilder.Entity("ElarosApp.Models.PatientModel", b =>
@@ -542,80 +694,36 @@ namespace ElarosApp.Migrations
                     b.Navigation("Question");
                 });
 
+            modelBuilder.Entity("ElarosApp.Models.PersonalCare", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("PersonalCare")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Ptsd", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Ptsd")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.SocialRole", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("SocialRole")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
+            modelBuilder.Entity("ElarosApp.Models.Voice", b =>
+                {
+                    b.HasOne("ElarosApp.Models.QuestionModel", null)
+                        .WithMany("Voice")
+                        .HasForeignKey("QuestionModelQuestionId");
+                });
+
             modelBuilder.Entity("ElarosApp.Models.QuestionModel", b =>
                 {
-                    b.HasOne("ElarosApp.Models.Activities", "Activities")
-                        .WithMany()
-                        .HasForeignKey("ActivitiesId");
-
-                    b.HasOne("ElarosApp.Models.Anxiety", "Anxiety")
-                        .WithMany()
-                        .HasForeignKey("AnxietyId");
-
-                    b.HasOne("ElarosApp.Models.Breathlessness", "Breathlessness")
-                        .WithMany()
-                        .HasForeignKey("BreathlessnessId");
-
-                    b.HasOne("ElarosApp.Models.Cognition", "Cognition")
-                        .WithMany()
-                        .HasForeignKey("CognitionId");
-
-                    b.HasOne("ElarosApp.Models.Communication", "Communication")
-                        .WithMany()
-                        .HasForeignKey("CommunicationId");
-
-                    b.HasOne("ElarosApp.Models.Consumption", "Consumption")
-                        .WithMany()
-                        .HasForeignKey("ConsumptionId");
-
-                    b.HasOne("ElarosApp.Models.Continence", "Continence")
-                        .WithMany()
-                        .HasForeignKey("ContinenceId");
-
-                    b.HasOne("ElarosApp.Models.Depression", "Depression")
-                        .WithMany()
-                        .HasForeignKey("DepressionId");
-
-                    b.HasOne("ElarosApp.Models.Employment", "Employment")
-                        .WithMany()
-                        .HasForeignKey("EmploymentActivitiesId");
-
-                    b.HasOne("ElarosApp.Models.Fatigue", "Fatigue")
-                        .WithMany()
-                        .HasForeignKey("FatigueId");
-
-                    b.HasOne("ElarosApp.Models.Mobility", "Mobility")
-                        .WithMany()
-                        .HasForeignKey("MobilityId");
-
-                    b.HasOne("ElarosApp.Models.OpeningQuestion", "OpeningQuestion")
-                        .WithMany()
-                        .HasForeignKey("OpeningQuestionId");
-
-                    b.HasOne("ElarosApp.Models.OverallHealth", "OverallHealth")
-                        .WithMany()
-                        .HasForeignKey("OverallHealthId");
-
-                    b.HasOne("ElarosApp.Models.Pain", "Pain")
-                        .WithMany()
-                        .HasForeignKey("PainId");
-
-                    b.HasOne("ElarosApp.Models.PersonalCare", "PersonalCare")
-                        .WithMany()
-                        .HasForeignKey("PersonalCareId");
-
-                    b.HasOne("ElarosApp.Models.Ptsd", "Ptsd")
-                        .WithMany()
-                        .HasForeignKey("PtsdId");
-
-                    b.HasOne("ElarosApp.Models.SocialRole", "SocialRole")
-                        .WithMany()
-                        .HasForeignKey("SocialRoleId");
-
-                    b.HasOne("ElarosApp.Models.Voice", "Voice")
-                        .WithMany()
-                        .HasForeignKey("VoiceId");
-
                     b.Navigation("Activities");
 
                     b.Navigation("Anxiety");

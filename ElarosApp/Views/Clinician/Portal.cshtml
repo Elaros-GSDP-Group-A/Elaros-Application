@@ -23,7 +23,7 @@
                         <h4 class="lead">Patient Code Generator:</h4>
                         <div class="container">
                             <hr />
-                            <form class="form-inline">
+                            <form class="form-inline" method="post">
 
                                 <div class="form-group col-12 justify-content-center mb-2">
                                     <label for="staticEmail" class="mr-2">Email to send code to: </label>
@@ -32,7 +32,7 @@
 
                                 <div class="form-group col-12 justify-content-center">
                                     <a href="#" for="GeneratedCode" onclick="GeneratRefCode()" class="mr-2 btn btn-primary btn-sm">Generate Code</a>
-                                    <input type="text" readonly class="form-control form-control-sm" id="TextboxRefCode" value="" placeholder="2Dj7a">
+                                    <input name="TextboxRefCode" type="text" readonly class="form-control form-control-sm" id="TextboxRefCode" value="" placeholder="2Dj7a">
                                     <a href="#" for="GeneratedCode" class="mr-2 btn btn-link btn-sm">Copy</a>
                                 </div>
 

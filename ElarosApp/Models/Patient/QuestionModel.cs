@@ -14,55 +14,59 @@ namespace ElarosApp.Models
         // The actual question context
 
         public string QuestionContent { get; set; }
-        public OverallHealth OverallHealth { get; set; }
-        public Employment Employment { get; set; }
+        public ICollection<OverallHealth> OverallHealth { get; set; }
+        public int? OverallHealthId{ get; set; }
 
+        public ICollection<Employment> Employment { get; set; }
+        public int? EmploymentId { get; set; }
 
         // Symptoms that a question could potentitally use
-        public OpeningQuestion OpeningQuestion { get; set; }
+        public ICollection<OpeningQuestion> OpeningQuestion { get; set; }
         public int? OpeningQuestionId { get; set; }
 
-        public Activities Activities { get; set; }
+        public ICollection<Activities> Activities { get; set; }
         public int? ActivitiesId { get; set; }
 
-        public Anxiety Anxiety { get; set; }
+        public ICollection<Anxiety> Anxiety { get; set; }
         public int? AnxietyId { get; set; }
-        public Breathlessness Breathlessness { get; set; }
+
+        public ICollection<Breathlessness> Breathlessness { get; set; }
         public int? BreathlessnessId { get; set; }
-        public Cognition Cognition { get; set; }
+
+        public ICollection<Cognition> Cognition { get; set; }
         public int? CognitionId { get; set; }
 
-        public Communication Communication { get; set; }
+        public ICollection<Communication> Communication { get; set; }
         public int? CommunicationId { get; set; }
 
-        public Consumption Consumption { get; set; }
+        public ICollection<Consumption> Consumption { get; set; }
         public int? ConsumptionId { get; set; }
 
-        public Continence Continence { get; set; }
+        public ICollection<Continence> Continence { get; set; }
         public int? ContinenceId { get; set; }
 
-        public Depression Depression { get; set; }
+        public ICollection<Depression> Depression { get; set; }
         public int? DepressionId { get; set; }
 
-        public Fatigue Fatigue { get; set; }
+        public ICollection<Fatigue> Fatigue { get; set; }
         public int? FatigueId { get; set; }
 
-        public Mobility Mobility { get; set; }
+        public ICollection<Mobility> Mobility { get; set; }
         public int? MobilityId { get; set; }
 
-        public Pain Pain { get; set; }
+        public ICollection<Pain> Pain { get; set; }
         public int? PainId { get; set; }
 
-        public PersonalCare PersonalCare { get; set; }
+        public ICollection<PersonalCare> PersonalCare { get; set; }
         public int? PersonalCareId { get; set; }
 
-        public Ptsd Ptsd { get; set; }
+        public ICollection<Ptsd> Ptsd { get; set; }
         public int? PtsdId { get; set; }
 
-        public SocialRole SocialRole { get; set; }
+        public ICollection<SocialRole> SocialRole { get; set; }
         public int? SocialRoleId { get; set; }
 
-        public Voice Voice { get; set; }
+        public ICollection<Voice> Voice { get; set; }
         public int? VoiceId { get; set; }
     }
 }
