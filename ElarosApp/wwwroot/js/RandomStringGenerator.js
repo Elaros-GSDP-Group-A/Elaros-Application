@@ -1,4 +1,5 @@
 ﻿document.getElementById("GeneratedCode").addEventListener("click", CodeGenerator);
+document.getElementById("ClipboardCopy").addEventListener("click", CopyCode);
 
 function CodeGenerator() {
     var code = "";
@@ -20,3 +21,9 @@ function NumberCode(min, max) {
     return String.fromCharCode(numCode);
 }
 
+function CopyCode() {
+    var code = document.getElementById("TextboxRefCode");
+    code.select();
+    document.execCommand("copy");
+    alert("Text has been Copied To Clipboard");
+}
