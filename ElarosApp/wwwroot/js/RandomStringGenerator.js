@@ -1,17 +1,22 @@
 ﻿document.getElementById("GeneratedCode").addEventListener("click", CodeGenerator);
 
 function CodeGenerator() {
-    var randomcode = "";
-    var omittedChars = [58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96];
-
-    for (var i = 0; i < 5; i++)
-    {
-        var randomInt = Math.floor((Math.random() * 74) + 48);
-        while (omittedChars.contains(randomInt)) {
-            randomInt = Math.floor((Math.random() * 74) + 48);
-        }
-        randomCode += String.fromCharCode(randomInt);
+    var code = "";
+    var min = 48;
+    var max = 123;
+    for (var i = 0; i < 5; i++) {
+        code += NumberCode(min, max);
     }
-    document.getElementById("TextBoxRefCode").value = randomcode;
+    console.log(code);
+    document.getElementById("TextboxRefCode").value = code;
+}
+
+function NumberCode(min, max) {
+
+    var exclusionSet = [58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96]
+    do {
+        var numCode = Math.floor(Math.random() * (max - min) + min);
+    } while (exclusionSet.includes(numCode));
+    return String.fromCharCode(numCode);
 }
 

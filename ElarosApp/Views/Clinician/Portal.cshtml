@@ -31,35 +31,12 @@
                                 </div>
 
                                 <div class="form-group col-12 justify-content-center">
-                                    <a href="#" for="GeneratedCode" onclick="GeneratRefCode()" class="mr-2 btn btn-primary btn-sm">Generate Code</a>
+                                    <a href="#" for="GeneratedCode" id="GeneratedCode" class="mr-2 btn btn-primary btn-sm">Generate Code</a>
                                     <input type="text" readonly class="form-control form-control-sm" id="TextboxRefCode" value="" placeholder="2Dj7a">
                                     <a href="#" for="GeneratedCode" class="mr-2 btn btn-link btn-sm">Copy</a>
                                 </div>
 
-                                <script>
-                                    function GeneratRefCode() {
-                                        var textbox = document.getElementById("TextboxRefCode");
-                                        var RandomCode = "";
-                                        var omittedChars = [58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96];
-                                        // algorithm for generating random code.
-                                        for (var i = 0; i < 5; i++) // where 5 is total number of characters in a ref code
-                                        {
-
-                                            var randomCharacter = Math.floor((Math.random() * 74) + 48);
-
-                                            while (omittedChars.includes(randomCharacter)) {
-                                                randomCharacter = Math.floor((Math.random() * 74) + 48);
-                                            }
-                                            RandomCode += String.fromCharCode(randomCharacter);
-                                        }
-
-                                        document.getElementById("TextboxRefCode").value = RandomCode;
-                                    }
-
-
-                                </script>
-
-                                @*<script src="~/js/RandomStringGenerator.js"></script> Replace inline script with this after merge.*@
+                                <script src="~/js/RandomStringGenerator.js"></script> Replace inline script with this after merge.
 
                                 <div class="form-group col-12 justify-content-center mt-3">
                                     <button type="submit" class="btn btn-success btn-sm btn-block">Create Patient Profile</button>
