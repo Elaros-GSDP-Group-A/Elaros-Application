@@ -17,53 +17,66 @@
 
 
 </head>
-<body>
-
+<body class="bg-light">
+    <header class="bg-dark border-bottom mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="lead py-2 text-warning">Long-Covid Questionnaire</div>
+                </div>
+                <div class="col-4 offset-2">
+                    <a asp-controller="Clinician" class="my-2 btn btn-sm btn-secondary">Clinician Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
     <h1>
         Patient Report Sheet
     </h1>
     <h2>
         Patient Name:
     </h2>
-
-    <div class="btn-group">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Choose Symptoms
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Breathlessness</a>
-                <a class="dropdown-item" href="#">Cough</a>
-                <a class="dropdown-item" href="#">Nutrition</a>
-                <a class="dropdown-item" href="#">Fatigue</a>
-                <a class="dropdown-item" href="#">Continence</a>
-                <a class="dropdown-item" href="#">Pain/Discomfort</a>
-                <a class="dropdown-item" href="#">Cognition</a>
-                <a class="dropdown-item" href="#">Anxiety</a>
-                <a class="dropdown-item" href="#">Depression</a>
-                <a class="dropdown-item" href="#">PTSD screening</a>
+    <div class="text-center">
+        <div class="btn-group">
+            <div class="custom-select">
+                <select class="form-select" aria-label=".form-select-sm example" data-style="btn-danger">
+                    <option value="starter" selected disabled>Choose First Symptom </option>
+                    <option value="breathlessness">Breathlessness</option>
+                    <option value="cough">Cough</option>
+                    <option value="nutrition">Nutrition</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="continence">Continence</option>
+                    <option value="pain/discomfort">Pain/Discomfort</option>
+                    <option value="cognition">Cognition</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="depression">Depression</option>
+                    <option value="ptsdscreening">PTSD screening</option>
+                </select>
             </div>
         </div>
-    </div>
-    <div class="btn-group">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Choose Symptoms
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Breathlessness</a>
-                <a class="dropdown-item" href="#">Cough</a>
-                <a class="dropdown-item" href="#">Nutrition</a>
-                <a class="dropdown-item" href="#">Fatigue</a>
-                <a class="dropdown-item" href="#">Continence</a>
-                <a class="dropdown-item" href="#">Pain/Discomfort</a>
-                <a class="dropdown-item" href="#">Cognition</a>
-                <a class="dropdown-item" href="#">Anxiety</a>
-                <a class="dropdown-item" href="#">Depression</a>
-                <a class="dropdown-item" href="#">PTSD screening</a>
+        <div class="btn-group">
+            <div class="custom-select">
+                <select class="form-select" aria-label=".form-select-sm example" data-style="btn-danger">
+                    <option value="starter" selected disabled>Choose Second Symptom </option>
+                    <option value="breathlessness">Breathlessness</option>
+                    <option value="cough">Cough</option>
+                    <option value="nutrition">Nutrition</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="continence">Continence</option>
+                    <option value="pain/discomfort">Pain/Discomfort</option>
+                    <option value="cognition">Cognition</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="depression">Depression</option>
+                    <option value="ptsdscreening">PTSD screening</option>
+                </select>
             </div>
         </div>
-    </div>
+            <div class="btn-group">
+                <div class="symptomBtn">
+                    <button type="button" class="btn btn-danger">Find Results</button>
+                </div>
+            </div>
+        </div>
     <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Symptoms Severity Score </a>
         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Breathlessness vs Cough </button>
@@ -223,12 +236,6 @@
             }
             drawMaterialChart();
         };
-
-
     </script>
-
-
-
-
 </body>
 </html>

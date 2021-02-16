@@ -16,7 +16,6 @@ p {
 
 body {
 }
-
 .card.card-body {
     align-content: center;
 }
@@ -152,7 +151,7 @@ input[type=range] {
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     font-style: italic;
-    background-color: red !important;
+    background-color: #dc3545 !important;
     color: black;
 }
 
@@ -189,7 +188,15 @@ input[type=range] {
     -ms-user-select: none;
     user-select: none;
 }
+/*select menu*/
 
-.dropdown {
-    background-color: red !important;
+.custom-select {
+    position: relative;
+    font-family: Arial;
 }
+
+select {
+    background-color: #dc3545 ;
+    color: white;
+}
+
