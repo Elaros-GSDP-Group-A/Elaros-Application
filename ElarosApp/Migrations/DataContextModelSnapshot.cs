@@ -226,7 +226,7 @@ namespace ElarosApp.Migrations
 
             modelBuilder.Entity("ElarosApp.Models.Employment", b =>
                 {
-                    b.Property<int>("ActivitiesId")
+                    b.Property<int>("EmploymentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -255,7 +255,9 @@ namespace ElarosApp.Migrations
                     b.Property<string>("UnmentionedProblemsPostCovid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ActivitiesId");
+                    b.HasKey("EmploymentId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.HasIndex("QuestionModelQuestionId");
 
@@ -493,6 +495,9 @@ namespace ElarosApp.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("DepressionId")
+                        .HasColumnType("int");
+                        
+                    b.Property<int?>("EmploymentId")
                         .HasColumnType("int");
 
                     b.Property<int?>("FatigueId")

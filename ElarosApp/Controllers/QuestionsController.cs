@@ -20,6 +20,8 @@ namespace ElarosApp.Controllers
             patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
         }
 
+        
+
         [HttpGet]
         public IActionResult Index(PatientModel P)
         {
@@ -61,6 +63,8 @@ namespace ElarosApp.Controllers
             patient.QuestionId++;
             _context.SaveChanges();
             return RedirectToAction("Index", patient);
+
+            
         }
 
         private IActionResult PreviousQuestion()
