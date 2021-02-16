@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Final Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="webStyle2.css" />
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 550px
+        }
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+    </div>
+  </div>
+</nav>-->
+
+<div class="container-fluid">
+    <div class="row content">
+        <header class="bg-dark border-bottom mb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="lead py-2 text-warning">Long-Covid Questionnaire</div>
+                    </div>
+                    <div class="col-4 offset-2">
+                        <a asp-controller="Clinician" class="my-2 btn btn-sm btn-secondary">Clinician Login</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="col-sm-3 sidenav hidden-xs">
+            <h2>Elaros Report Page</h2>
+            <h3>Patient Name/Number: </h3>
+            <ul class="nav nav-pills nav-stacked">
+                <div class="custom-select">
+                    <select class="form-select" aria-label=".form-select-sm example" data-style="btn-danger">
+                        <option value="starter" selected disabled>Choose First Symptom </option>
+                        <option value="breathlessness">Breathlessness</option>
+                        <option value="cough">Cough</option>
+                        <option value="nutrition">Nutrition</option>
+                        <option value="fatigue">Fatigue</option>
+                        <option value="continence">Continence</option>
+                        <option value="pain/discomfort">Pain/Discomfort</option>
+                        <option value="cognition">Cognition</option>
+                        <option value="anxiety">Anxiety</option>
+                        <option value="depression">Depression</option>
+                        <option value="ptsdscreening">PTSD screening</option>
+                    </select>
+                    <br>
+                </div>
+                <div class="custom-select">
+                    <select class="form-select" aria-label=".form-select-sm example" data-style="btn-danger">
+                        <option value="starter" selected disabled>Choose Second Symptom </option>
+                        <option value="breathlessness">Breathlessness</option>
+                        <option value="cough">Cough</option>
+                        <option value="nutrition">Nutrition</option>
+                        <option value="fatigue">Fatigue</option>
+                        <option value="continence">Continence</option>
+                        <option value="pain/discomfort">Pain/Discomfort</option>
+                        <option value="cognition">Cognition</option>
+                        <option value="anxiety">Anxiety</option>
+                        <option value="depression">Depression</option>
+                        <option value="ptsdscreening">PTSD screening</option>
+                    </select>
+                </div>
+            </ul><br>
+        </div>
+        <br>
+
+        <div class="col-sm-9">
+
+            <p id ="descr" style="text-align: center">
+                These charts show the symptom change from Pre-Covid to Post-Covid
+            </p>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h style="text-align:center">
+                            <h4>Pie Chart</h4>
+                        </h>
+                        <p>
+                            <div id="piechart"></div>
+                        </p>
+                    </div>
+                    <div class="well">
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h style="text-align:center">
+                            <h4>Bar Chart</h4>
+                        </h>
+                        <p>
+                            <div id="barchart"></div>
+                        </p>
+                    </div>
+                    <div class="well">
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h style="text-align:center">
+                            <h4>Line Graph</h4>
+                        </h>
+                        <p>
+                            <div id="linechart"></div>
+                        </p>
+                    </div>
+                    <div class="well">
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h style="text-align:center">
+                            <h4>Column Charts</h4>
+                        </h>
+                        <p>
+                            <div id="columnchart"></div>
+                        </p>
+                    </div>
+                    <div class="well">
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                        <p>Show the percentage change from last taken info</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+	<!-- piechart -->
+	google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Symptom', 'Score out of 10'],
+          ['Breathlessness',     5],
+          ['Cough',      2],
+          ['Nutrition',  2],
+          ['Fatigue', 2],
+          ['Continence',    7],
+		  ['Pain/Discomfort',    7],
+		  ['Cognition',    7],
+		  ['Anxiety',    7], 
+		  ['Depression',    7],
+		  ['PTSD screening',    7]
+        ]);
+
+        var options = {
+          title: 'Symptoms'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+	  
+	<!-- barchart -->  
+	 google.charts.load('current', {packages: ['corechart', 'bar']});
+	google.charts.setOnLoadCallback(drawStacked);
+	
+
+	function drawStacked() {
+      var data = google.visualization.arrayToDataTable([
+        ['Symptom', 'Pre-Covid', 'Covid'],
+        ['Breathlessness', 1, 5],
+        ['Cough', 2, 6],
+        ['Nutrition', 5, 4],
+        ['Fatigue', 3, 6],
+        ['Continence', 2, 3],
+		['Pain/Discomfort', 6, 6],
+		['Cognition', 2, 3],
+		['Anxiety', 3, 5],
+		['Depression', 3, 6],
+		['PTSD screening', 2, 3],
+      ]);
+
+      var options = {
+        title: 'Symptoms Severity Score',
+        chartArea: {width: '50%'},
+        isStacked: true,
+        hAxis: {
+          title: 'Score',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'Symptoms'
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+      chart.draw(data, options);
+    }
+	
+	<!-- linechart --> 
+	google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart2() {
+        var data = google.visualization.arrayToDataTable([
+          ['Symptom', 'Breathlessness', 'Cough'],
+          ['01/01/21',  6,      5],
+          ['08/01/21',  3,      7],
+          ['15/01/21',  4,       10],
+          ['22/01/21',  5,      8]
+        ]);
+
+        var options = {
+          title: 'Symptom',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+
+        chart.draw(data, options);
+      }
+	  
+	<!-- columnchart -->  
+	 google.charts.load('current', {packages: ['corechart', 'bar']});
+		google.charts.setOnLoadCallback(drawBasic);
+
+		function drawBasic() {
+
+		var data = new google.visualization.DataTable();
+		data.addColumn('timeofday', 'Time of Day');
+		data.addColumn('number', 'Score');
+
+		data.addRows([
+			[{v: [8, 0, 0], f: '8 am'}, 1],
+			[{v: [9, 0, 0], f: '9 am'}, 2],
+			[{v: [10, 0, 0], f:'10 am'}, 3],
+			[{v: [11, 0, 0], f: '11 am'}, 4],
+			[{v: [12, 0, 0], f: '12 pm'}, 5],
+			[{v: [13, 0, 0], f: '1 pm'}, 6],
+			[{v: [14, 0, 0], f: '2 pm'}, 7],
+			[{v: [15, 0, 0], f: '3 pm'}, 8],
+			[{v: [16, 0, 0], f: '4 pm'}, 9],
+			[{v: [17, 0, 0], f: '5 pm'}, 10],
+		]);
+
+      var options = {
+        title: 'Symptom throughout the day',
+        hAxis: {
+          title: 'Time of Day',
+          format: 'h:mm a',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          title: 'Rating (scale of 1-10)'
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('columnchart'));
+
+      chart.draw(data, options);
+    }
+	</script>   
+</body>
+</html>

@@ -156,7 +156,6 @@ input[type=range] {
 }
 
 .input-group-text {
-    background-color: #fd9d20;
     font-style: italic;
     color: black;
 }
@@ -339,7 +338,7 @@ input[type=range]::-webkit-slider-thumb {
   .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited 
   {
     font-style: italic;
-    background-color: #fd9d20 !important;
+    background-color: #fd9d20 ;
     color: black;
 }
 .input-group-text

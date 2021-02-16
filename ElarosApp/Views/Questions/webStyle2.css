@@ -1,0 +1,20 @@
+select {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+p {
+    color: black;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 24px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+#descr {
+    font-size: 20px;
+    font-style: italic;
+    color: indianred;
+}
