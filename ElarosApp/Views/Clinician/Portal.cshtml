@@ -3,9 +3,80 @@
     Layout = "_LayoutClinician";
 }
 
-<h1>Logged into Clinician Portal as @Model.Email</h1>
+<h1 class="lead">Logged into Clinician Portal as @Model.Email</h1>
 
-<div class="row justify-content-center">
+
+<div class="accordion"  id="ClinicianAccordion">
+    <div class="card bg-light" style="border:none !important;">
+        <div class="card-header bg-light" id="headingOne" style="border: none !important;">
+            <h2 class="mb-0">
+                <button class="btn btn-warning btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Generate Patient Referal Code
+                </button>
+            </h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#ClinicianAccordion">
+                    <div class="card-body bg-light">
+                        <h4 class="lead">Patient Code Generator:</h4>
+                        <div class="container">
+                            <hr />
+                            <form class="form-inline">
+
+                                <div class="form-group col-12 justify-content-center mb-2">
+                                    <label for="staticEmail" class="mr-2">Email to send code to: </label>
+                                    <input type="email" class="form-control form-control-sm" id="staticEmail" value="" placeholder="email@example.com">
+                                </div>
+
+                                <div class="form-group col-12 justify-content-center">
+                                    <a href="#" for="GeneratedCode" onclick="GeneratRefCode()" class="mr-2 btn btn-primary btn-sm">Generate Code</a>
+                                    <input type="text" readonly class="form-control form-control-sm" id="TextboxRefCode" value="" placeholder="2Dj7a">
+                                    <a href="#" for="GeneratedCode" class="mr-2 btn btn-link btn-sm">Copy</a>
+                                </div>
+
+                                <script>
+                                    function GeneratRefCode() {
+                                        var textbox = document.getElementById("TextboxRefCode");
+                                        var RandomCode = "";
+                                        var omittedChars = [58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96];
+                                        // algorithm for generating random code.
+                                        for (var i = 0; i < 5; i++) // where 5 is total number of characters in a ref code
+                                        {
+
+                                            var randomCharacter = Math.floor((Math.random() * 74) + 48);
+
+                                            while (omittedChars.includes(randomCharacter)) {
+                                                randomCharacter = Math.floor((Math.random() * 74) + 48);
+                                            }
+                                            RandomCode += String.fromCharCode(randomCharacter);
+                                        }
+
+                                        document.getElementById("TextboxRefCode").value = RandomCode;
+                                    }
+
+
+                                </script>
+
+                                @*<script src="~/js/RandomStringGenerator.js"></script> Replace inline script with this after merge.*@
+
+                                <div class="form-group col-12 justify-content-center mt-3">
+                                    <button type="submit" class="btn btn-success btn-sm btn-block">Create Patient Profile</button>
+                                </div>
+                            </form>
+                        </div> <!-- End of form container -->
+                        <hr />
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- End of card body --> 
+    </div>
+</div>
+
+
+<div class="row justify-content-center mt-3">
     <a asp-action="LogoutClinician" asp-controller="Clinician" class="btn btn-danger px-5 btn-sm">Logout</a>
 </div>
 
