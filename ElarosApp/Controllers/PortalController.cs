@@ -29,7 +29,7 @@ namespace ElarosApp.Controllers
         [HttpPost]
         public IActionResult Index(string TextboxRefCode)
         {
-            _context.Patients.Add(new Models.PatientModel { ReferalCode = TextboxRefCode, QuestionId = 1, FinishedQuestionniare = false, Question = _context.Questions.FirstOrDefault() });
+            _context.Patients.Add(new Models.PatientModel { ReferalCode = TextboxRefCode, QuestionId = 1, FinishedQuestionniare = false});
             _context.SaveChanges();
 
             return RedirectToAction("Index", _clinician);
