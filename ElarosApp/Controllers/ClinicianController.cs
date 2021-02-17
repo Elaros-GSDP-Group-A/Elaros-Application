@@ -24,7 +24,7 @@ namespace ElarosApp.Controllers
             if (Request.Cookies.Keys.Contains("ClinicianLoggedIn"))
             {
                 var formModel = new LoginFormModel() { Email = email, Password = password };
-                return View("Portal", formModel);
+                return RedirectToAction("Index", "Portal", formModel);
             }
                 
             LoginFormModel = new LoginFormModel();
