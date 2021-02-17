@@ -2,10 +2,20 @@ select {
     background-color: #dc3545 !important;
     color: white !important;
 }
+h2 {
+    text-align: center;
+}
+h3 {
+    color: black;
+    font-size: 30px;
+}
+#carouselExampleControls {
+    background: #E6E6E6;
+}
+
 
 p {
     color: black;
-    font-family: 'Helvetica Neue', sans-serif;
     font-size: 14px;
     line-height: 24px;
     margin: 0 0 24px;
@@ -16,5 +26,30 @@ p {
 #descr {
     font-size: 20px;
     font-style: italic;
-    color: indianred;
+    color: darkorange;
+}
+
+label {
+    display: inline-block;
+    width: 96px;
+    padding-bottom: 25px;
+    padding-top: 20px;
+    text-align: left;
+    font-size: 13px;
+}
+
+
+#image{
+    text-align: center;
+}
+
+div.absolute {
+    position: center;
+    width: 700px;
+    height: 150px;
+    border: 3px solid #73AD21;
+}
+#carouselExampleControls
+{
+    padding: 50px;
 }
