@@ -4,14 +4,16 @@ using ElarosApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ElarosApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210217110706_removedScript")]
+    partial class removedScript
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,7 +228,7 @@ namespace ElarosApp.Migrations
 
             modelBuilder.Entity("ElarosApp.Models.Employment", b =>
                 {
-                    b.Property<int>("ActivitiesId")
+                    b.Property<int>("EmploymentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -255,7 +257,9 @@ namespace ElarosApp.Migrations
                     b.Property<string>("UnmentionedProblemsPostCovid")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ActivitiesId");
+                    b.HasKey("EmploymentId");
+
+                    b.HasIndex("QuestionModelQuestionId");
 
                     b.ToTable("Employment");
                 });
@@ -493,10 +497,8 @@ namespace ElarosApp.Migrations
                     b.Property<int?>("DepressionId")
                         .HasColumnType("int");
 
-
                     b.Property<int?>("EmploymentId")
                         .HasColumnType("int");
-
 
                     b.Property<int?>("FatigueId")
                         .HasColumnType("int");

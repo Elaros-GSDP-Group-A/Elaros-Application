@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElarosApp.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace ElarosApp.Models
         public int ActivitiesId { get; set; }
         public string Precovid { get; set; }
         public string Postcovid { get; set; }
+
+   
     }
 }
