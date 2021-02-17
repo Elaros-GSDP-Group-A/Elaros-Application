@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ElarosApp.Data;
 using ElarosApp.Models.Clinician;
 using Microsoft.AspNetCore.Mvc;
+using ElarosApp.Data;
 
 namespace ElarosApp.Controllers
 {
@@ -28,7 +29,7 @@ namespace ElarosApp.Controllers
         [HttpPost]
         public IActionResult Index(string TextboxRefCode)
         {
-            _context.Patients.Add(new Models.PatientModel { ReferalCode = TextboxRefCode, QuestionId = 1, FinishedQuestionniare = false, Question = _context.Questions.FirstOrDefault() });
+            _context.Patients.Add(new Models.PatientModel { ReferalCode = TextboxRefCode, QuestionId = 1, FinishedQuestionniare = false});
             _context.SaveChanges();
 
             return RedirectToAction("Index", _clinician);
