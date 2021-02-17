@@ -47,42 +47,47 @@ else
                 {
 
                     case 1:
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null };
+                        Model.AnswerModel.TextboxAnswers = new List<string>() {"", ""};
+
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                             <label class="form-check-label" for="inlineRadio1">Yes</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                             <label class="form-check-label" for="inlineRadio2">No</label>
                         </div>
 
                         <br />
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">If yes, please elabroate further if you are comfortable doing so:</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[0]" class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
                             <label for="OpenQ2" class="lead font-weight-bold">Have you used any other health services to manage COVID-19 symptoms (e.g. your GP?)</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio3" value=true>
+                                <label class="form-check-label" for="inlineRadio3">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio4" value=false>
+                                <label class="form-check-label" for="inlineRadio4">No</label>
                             </div>
                         </div>
 
                         <br />
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">If yes, please elabroate further if you are comfortable doing so:</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea2" class="lead font-weight-bold">If yes, please elabroate further if you are comfortable doing so:</label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[1]" class="form-control" id="Textarea2" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
                         break;
                     case 2:
+
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", "", "", "", "", ""};
                         <div class="form-group">
                             <table class="table table-borderless">
                                 <thead>
@@ -98,36 +103,36 @@ else
                                         <td>
                                             <div class="form-group col-md-4 ml-auto mr-auto">
                                                 <label for="inputState">0 - 10</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
+                                                <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group col-md-4 ml-auto mr-auto">
                                                 <label for="inputState">0 - 10</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
+                                                <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </td>
@@ -137,36 +142,36 @@ else
                                         <td>
                                             <div class="form-group col-md-4 ml-auto mr-auto">
                                                 <label for="inputState">0 - 10</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
+                                                <select asp-for="AnswerModel.NumberAnswers[2]" id="inputState" class="form-control">
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group col-md-4 ml-auto mr-auto">
                                                 <label for="inputState">0 - 10</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
+                                                <select asp-for="AnswerModel.NumberAnswers[3]" id="inputState" class="form-control">
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </td>
@@ -176,36 +181,36 @@ else
                                         <td>
                                             <div class="form-group col-md-4 ml-auto mr-auto">
                                                 <label for="inputState">0 - 10</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
+                                                <select asp-for="AnswerModel.NumberAnswers[4]" id="inputState" class="form-control">
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-group col-md-4 ml-auto mr-auto">
                                                 <label for="inputState">0 - 10</label>
-                                                <select id="inputState" class="form-control">
-                                                    <option selected>0</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
+                                                <select asp-for="AnswerModel.NumberAnswers[5]" id="inputState" class="form-control">
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
                                             </div>
                                         </td>
@@ -217,15 +222,18 @@ else
                         <br />
                         break;
                     case 3:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null, null};
+
                         <div class="form-group col-12 mt-3">
                             <label for="coughQ1" class="lead">cough/ throat sensitivity</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
@@ -233,97 +241,103 @@ else
                         <div class="form-group col-12 mt-3">
                             <label for="coughQ2" class="lead">voice change</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio3" value=true>
+                                <label class="form-check-label" for="inlineRadio3">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio4" value=false>
+                                <label class="form-check-label" for="inlineRadio4">No</label>
                             </div>
                         </div>
 
                         <div class="form-group col-12 mt-3">
                             <label for="coughQ3" class="lead">noisy breathing</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[2]" class="form-check-input" type="radio" id="inlineRadio5" value=true>
+                                <label class="form-check-label" for="inlineRadio5">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[2]" class="form-check-input" type="radio" id="inlineRadio6" value=false>
+                                <label class="form-check-label" for="inlineRadio6">No</label>
                             </div>
                         </div>
 
                         <div class="input-group row">
                             <p class="col-8">Rate the severity of this problem (0 being not present, 10 being severe and life disturbing) </p>
-                            <select id="inputState" class="form-control col-1">
-                                <option selected>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
 
                         <br />
                         break;
+
                     case 4:
+
+                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null};
+
                         <div class="form-group col-12 mt-3">
                             <label for="SwallingQ1" class="lead">Are you having difficulties eating, drinking or swallowing such as coughing, choking or avoiding any food or drinks?</label>
                             <br />
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
 
                         <div class="input-group row">
                             <p class="col-9">Rate the severity of swallowing problem (0 being no symptom, 10 being severe and life disturbing) </p>
-                            <select id="inputState" class="form-control col-1">
-                                <option selected>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
 
                         <div class="form-group col-12 mt-3">
                             <label for="SwallingQ2" class="lead">Are you or your family concerned that you have ongoing weight loss or any ongoing nutritional concerns as a result of Covid-19?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio3" value=true>
+                                <label class="form-check-label" for="inlineRadio3">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio4" value=false>
+                                <label class="form-check-label" for="inlineRadio4">No</label>
                             </div>
                         </div>
 
                         <br />
                         break;
                     case 5:
-                        <div class="form-group col-12 mt-3">
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        @*<div class="form-group col-12 mt-3">
                             <label for="FatigueQ1" class="lead">Do you become fatigued more easily compared to before your illness?</label>
                             <br />
                             <div class="form-check form-check-inline">
@@ -335,7 +349,7 @@ else
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
-                        </div>
+                        </div>*@
 
                         <table class="table table-borderless">
                             <thead>
@@ -351,36 +365,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -389,15 +403,18 @@ else
                         </table>
                         break;
                     case 6:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null};
+
                         <div class="form-group col-12 mt-3">
                             <label for="ContinenceQ1" class="lead">Controlling your bowel</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
@@ -405,45 +422,49 @@ else
                         <div class="form-group col-12 mt-3">
                             <label for="ContinenceQ2" class="lead">Controlling your bladder</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio3" value=true>
+                                <label class="form-check-label" for="inlineRadio3">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio4" value=false>
+                                <label class="form-check-label" for="inlineRadio4">No</label>
                             </div>
                         </div>
 
                         <div class="input-group row">
                             <p class="col-8">Rate the severity of continence problem (0 being not present, 10 being severe and life disturbing) </p>
-                            <select id="inputState" class="form-control col-1">
-                                <option selected>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
 
                         <br />
                         break;
                     case 7:
+
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null};
+
                         <div class="form-group col-12 mt-3">
                             <label for="PainQ1" class="lead">Have you got any pain that is new since contracting the illness?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio"  id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio"id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
@@ -462,36 +483,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -500,49 +521,54 @@ else
                         </table>
                         break;
                     case 8:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null};
+
                         <div class="form-group col-12 mt-3">
                             <label for="CognitionQ1" class="lead">Concentrating?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
                         <div class="form-group col-12 mt-3">
                             <label for="CognitionQ2" class="lead">Short term memory?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio3" value=true>
+                                <label class="form-check-label" for="inlineRadio3">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio4" value=false>
+                                <label class="form-check-label" for="inlineRadio4">No</label>
                             </div>
                         </div>
 
                         <div class="input-group row">
                             <p class="col-8">Rate the severity of cognition problem (0 being not present, 10 being severe and life disturbing) </p>
-                            <select id="inputState" class="form-control col-1">
-                                <option selected>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
                         break;
                     case 9:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -557,36 +583,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -595,6 +621,8 @@ else
                         </table>
                         break;
                     case 10:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -609,36 +637,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -647,15 +675,19 @@ else
                         </table>
                         break;
                     case 11:
+
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null, null, null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+
                         <div class="form-group col-12 mt-3">
                             <label for="PTSDQ1" class="lead">Have you had any unwanted memories of your illness or hospital admission whilst you were awake, so not counting dreams?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
@@ -663,91 +695,97 @@ else
                         <div class="form-group col-12 mt-3">
                             <label for="PTSDQ2" class="lead"> Have you had any unpleasant dreams about your illness or hospital admission?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio3" value=true>
+                                <label class="form-check-label" for="inlineRadio3">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[1]" class="form-check-input" type="radio" id="inlineRadio4" value=false>
+                                <label class="form-check-label" for="inlineRadio4">No</label>
                             </div>
                         </div>
 
                         <div class="form-group col-12 mt-3">
                             <label for="PTSDQ3" class="lead">Have you tried to avoid thoughts or feelings about your illness or hospital admission?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[2]" class="form-check-input" type="radio" id="inlineRadio5" value=true>
+                                <label class="form-check-label" for="inlineRadio5">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[2]" class="form-check-input" type="radio" id="inlineRadio6" value=false>
+                                <label class="form-check-label" for="inlineRadio6">No</label>
                             </div>
                         </div>
 
                         <div class="input-group row">
                             <p class="col-8">Rate the severity of these stress problems (0 being not present, 10 being severe and life disturbing) </p>
-                            <select id="inputState" class="form-control col-1">
-                                <option selected>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
 
                         <div class="form-group col-12 mt-3">
                             <label for="PTSDQ4" class="lead">Are you currently having thoughts about harming yourself in any way?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[3]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
+                                <label class="form-check-label" for="inlineRadio7">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                <input asp-for="AnswerModel.CheckboxAnswers[3]" class="form-check-input" type="radio" id="inlineRadio8" value=false>
+                                <label class="form-check-label" for="inlineRadio8">No</label>
                             </div>
                         </div>
                         break;
+
                     case 12:
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+
                         <div class="form-group col-12 mt-3">
                             <label for="CommsQ1" class="lead">Since your illness have you had new or worsened difficulty with communication/word finding difficulty/ understanding others ?</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
 
                         <div class="input-group row">
                             <p class="col-8">Rate the severity of communication problem (0 being not present, 10 being severe and life disturbing)  </p>
-                            <select id="inputState" class="form-control col-1">
-                                <option selected>0</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
+                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
                             </select>
                         </div>
                         break;
                     case 13:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -762,36 +800,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -800,6 +838,7 @@ else
                         </table>
                         break;
                     case 14:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -814,36 +853,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -852,6 +891,7 @@ else
                         </table>
                         break;
                     case 15:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -866,36 +906,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -904,6 +944,7 @@ else
                         </table>
                         break;
                     case 16:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -918,36 +959,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -956,6 +997,7 @@ else
                         </table>
                         break;
                     case 17:
+                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -970,36 +1012,36 @@ else
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[0]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group col-10 ml-auto mr-auto">
                                             <label for="inputState">0 - 10</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
+                                            <select asp-for="AnswerModel.NumberAnswers[1]" id="inputState" class="form-control">
+                                                <option value="0" selected>0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                         </div>
                                     </td>
@@ -1008,39 +1050,41 @@ else
                         </table>
                         break;
                     case 18:
+                        Model.AnswerModel.TextboxAnswers = new List<string>() {"", "", "", "", "", "", ""};
+
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">What is your employment situation and has your illness affected your ability to do your usual work? Occupation:</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[0]" class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">Employment status before Covid-19 Lockdown: </label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea2" class="lead font-weight-bold">Employment status before Covid-19 Lockdown: </label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[1]" class="form-control" id="Textarea2" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">Employment status before you became ill: </label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea3" class="lead font-weight-bold">Employment status before you became ill: </label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[2]" class="form-control" id="Textarea3" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">Employment status now: </label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea4" class="lead font-weight-bold">Employment status now: </label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[3]" class="form-control" id="Textarea4" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">Do you think your family or carer would have anything to add from their perspective? </label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea5" class="lead font-weight-bold">Do you think your family or carer would have anything to add from their perspective? </label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[4]" class="form-control" id="Textarea5" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">Are you experiencing any other new problems since your illness we haven’t mentioned?</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea6" class="lead font-weight-bold">Are you experiencing any other new problems since your illness we haven’t mentioned?</label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[5]" class="form-control" id="Textarea6" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
-                            <label for="Textarea1" class="lead font-weight-bold">Any other discussion (clinical notes):</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <label for="Textarea7" class="lead font-weight-bold">Any other discussion (clinical notes):</label>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[6]" class="form-control" id="Textarea7" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
                         break;
                 }
