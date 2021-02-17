@@ -16,8 +16,8 @@ namespace ElarosApp.Controllers
 
         public QuestionsController(DataContext context)
         {
-            
             _context = context;
+
             PatientModel pm = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
             AnswerModel ans = new AnswerModel();
 
@@ -29,15 +29,14 @@ namespace ElarosApp.Controllers
         [HttpGet]
         public IActionResult Index(PatientModel P)
         {
-            var patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == P.ReferalCode);
+            _viewModel.PatientModel = _context.Patients.FirstOrDefault(p => p.ReferalCode == P.ReferalCode);
             patientName = _viewModel.PatientModel.ReferalCode;
 
             if (_viewModel.PatientModel.FinishedQuestionniare == true)
                 return View("QuestionnaireFinished", _viewModel.PatientModel);
 
-            MakeRelationships(patient);
+            MakeRelationships(_viewModel.PatientModel);
 
-            _viewModel.PatientModel = patient;
             return View("Index", _viewModel);
         }
 
@@ -76,7 +75,7 @@ namespace ElarosApp.Controllers
 
             _viewModel.PatientModel.QuestionId++;
             _context.SaveChanges();
-            return RedirectToAction("Index", _viewModel);
+            return RedirectToAction("Index", _viewModel.PatientModel);
         }
 
         private IActionResult PreviousQuestion()
@@ -87,7 +86,7 @@ namespace ElarosApp.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Index", _viewModel);
+            return RedirectToAction("Index", _viewModel.PatientModel);
         }
 
         public void MakeRelationships(PatientModel currentPatient)
