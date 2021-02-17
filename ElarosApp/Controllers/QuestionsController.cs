@@ -60,11 +60,18 @@ namespace ElarosApp.Controllers
 
         private IActionResult NextQuestion()
         {
+            
+            switch (patient.QuestionId)
+            {
+                case 1:
+
+                    break;
+            }
+
+
             patient.QuestionId++;
             _context.SaveChanges();
             return RedirectToAction("Index", patient);
-
-            
         }
 
         private IActionResult PreviousQuestion()
