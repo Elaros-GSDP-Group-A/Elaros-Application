@@ -7,7 +7,8 @@ namespace ElarosApp.Models
 {
     public class AnswerModel
     {
-        public List<bool> CheckboxAnswers { get; set; }
+        
+        public List<bool?> CheckboxAnswers { get; set; }
         public List<string> NumberAnswers { get; set; }
         public List<string> TextboxAnswers { get; set; }
     }
