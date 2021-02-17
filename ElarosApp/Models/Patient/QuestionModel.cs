@@ -15,12 +15,8 @@ namespace ElarosApp.Models
 
         public string QuestionContent { get; set; }
         public ICollection<OverallHealth> OverallHealth { get; set; }
-      
-        public int? OverallHealthId{ get; set; }
-
-
         public ICollection<Employment> Employment { get; set; }
-        public int? EmploymentId { get; set; }
+
 
         // Symptoms that a question could potentitally use
         public ICollection<OpeningQuestion> OpeningQuestion { get; set; }
@@ -31,10 +27,8 @@ namespace ElarosApp.Models
 
         public ICollection<Anxiety> Anxiety { get; set; }
         public int? AnxietyId { get; set; }
-
         public ICollection<Breathlessness> Breathlessness { get; set; }
         public int? BreathlessnessId { get; set; }
-
         public ICollection<Cognition> Cognition { get; set; }
         public int? CognitionId { get; set; }
 
@@ -43,7 +37,6 @@ namespace ElarosApp.Models
 
         public ICollection<Consumption> Consumption { get; set; }
         public int? ConsumptionId { get; set; }
-
         public ICollection<Continence> Continence { get; set; }
         public int? ContinenceId { get; set; }
 

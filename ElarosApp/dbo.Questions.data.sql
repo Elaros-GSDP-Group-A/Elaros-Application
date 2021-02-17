@@ -1,4 +1,9 @@
 ﻿SET IDENTITY_INSERT [dbo].[Questions] ON
+
+INSERT INTO [dbo].[Questions] ([QuestionId], [Content], [NumberOfAnswers]) VALUES (NULL, NULL, NULL)
+SET IDENTITY_INSERT [dbo].[Questions] OFF
+DBCC CHECKIDENT ('[TestTable]', RESEED, 0);
+
 INSERT INTO [dbo].[Questions] ([QuestionId], [QuestionContent], [OpeningQuestionId], [ActivitiesId], [AnxietyId], [BreathlessnessId], [CognitionId], [CommunicationId], [ConsumptionId], [ContinenceId], [DepressionId], [FatigueId], [MobilityId], [PainId], [PersonalCareId], [PtsdId], [SocialRoleId], [VoiceId], [EmploymentId], [OverallHealthId]) VALUES (1, N'Have you had any medical problems related to COVID-19 that needed hospital admission?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 INSERT INTO [dbo].[Questions] ([QuestionId], [QuestionContent], [OpeningQuestionId], [ActivitiesId], [AnxietyId], [BreathlessnessId], [CognitionId], [CommunicationId], [ConsumptionId], [ContinenceId], [DepressionId], [FatigueId], [MobilityId], [PainId], [PersonalCareId], [PtsdId], [SocialRoleId], [VoiceId], [EmploymentId], [OverallHealthId]) VALUES (2, N'Please respond to below questions to the best of your knowledge. On a scale of 0-10, with 0 being not breathless at all, and 10 being extremely breathless, how breathless are you:
 (n/a if does not perform this activity)

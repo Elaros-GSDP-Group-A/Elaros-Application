@@ -8,7 +8,7 @@ namespace ElarosApp.Models
 {
     public class Employment { 
         [Key]
-        public int EmploymentId { get; set; }
+        public int ActivitiesId { get; set; }
         public string Occupation { get; set; }
         public string EmploymentBeforeLockdown { get; set; }
         public string EmploymentPrecovid { get; set; }
