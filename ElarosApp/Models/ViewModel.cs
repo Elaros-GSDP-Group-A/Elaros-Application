@@ -7,7 +7,7 @@ namespace ElarosApp.Models
 {
     public class ViewModel
     {
-        PatientModel PatientModel { get; set; }
+        public PatientModel PatientModel { get; set; }
         public AnswerModel AnswerModel { get; set; }
     }
 }

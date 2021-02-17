@@ -11,13 +11,15 @@ namespace ElarosApp.Controllers
     public class QuestionsController : Controller
     {
         private readonly DataContext _context;
-        private static PatientModel patient;
+        private static ViewModel _viewModel;
         private static string patientName;
 
         public QuestionsController(DataContext context)
         {
             _context = context;
-            patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
+            _viewModel.PatientModel = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
+            AnswerModel ans = new AnswerModel();
+            _viewModel.AnswerModel = ans;
         }
 
         
@@ -32,7 +34,9 @@ namespace ElarosApp.Controllers
                 return View("QuestionnaireFinished", patient);
 
             MakeRelationships(patient);
-            return View("Index", patient);
+
+            _viewModel.PatientModel = patient;
+            return View("Index", _viewModel);
         }
 
         [HttpPost]
@@ -47,12 +51,12 @@ namespace ElarosApp.Controllers
             if (submitButton == "SubmitQuestionnaire")
                 return SubmitQuestionnaire();
 
-            return RedirectToAction("Index", patient);
+            return RedirectToAction("Index", _viewModel);
         }
 
         private IActionResult SubmitQuestionnaire()
         {
-            patient.FinishedQuestionniare = true;
+            _viewModel.PatientModel.FinishedQuestionniare = true;
             HttpContext.Response.Cookies.Delete("LongCovidPatientAuthCookie");
             _context.SaveChanges();
             return RedirectToAction("Index", "Home");
@@ -61,7 +65,7 @@ namespace ElarosApp.Controllers
         private IActionResult NextQuestion()
         {
             
-            switch (patient.QuestionId)
+            switch (_viewModel.PatientModel.QuestionId)
             {
                 case 1:
 
@@ -69,20 +73,20 @@ namespace ElarosApp.Controllers
             }
 
 
-            patient.QuestionId++;
+            _viewModel.PatientModel.QuestionId++;
             _context.SaveChanges();
-            return RedirectToAction("Index", patient);
+            return RedirectToAction("Index", _viewModel);
         }
 
         private IActionResult PreviousQuestion()
         {
-            if(patient.QuestionId > 1)
+            if(_viewModel.PatientModel.QuestionId > 1)
             {
-                patient.QuestionId--;
+                _viewModel.PatientModel.QuestionId--;
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Index", patient);
+            return RedirectToAction("Index", _viewModel);
         }
 
         public void MakeRelationships(PatientModel currentPatient)
