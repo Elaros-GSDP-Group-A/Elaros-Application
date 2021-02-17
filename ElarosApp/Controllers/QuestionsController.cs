@@ -17,23 +17,24 @@ namespace ElarosApp.Controllers
         public QuestionsController(DataContext context)
         {
             _context = context;
-            _viewModel.PatientModel = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
+
+            PatientModel pm = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
             AnswerModel ans = new AnswerModel();
-            _viewModel.AnswerModel = ans;
+
+            _viewModel = new ViewModel() { AnswerModel = ans, PatientModel = pm };
         }
 
         [HttpGet]
         public IActionResult Index(PatientModel P)
         {
-            var patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == P.ReferalCode);
-            patientName = patient.ReferalCode;
+            _viewModel.PatientModel = _context.Patients.FirstOrDefault(p => p.ReferalCode == P.ReferalCode);
+            patientName = _viewModel.PatientModel.ReferalCode;
 
-            if (patient.FinishedQuestionniare == true)
-                return View("QuestionnaireFinished", patient);
+            if (_viewModel.PatientModel.FinishedQuestionniare == true)
+                return View("QuestionnaireFinished", _viewModel.PatientModel);
 
-            MakeRelationships(patient);
+            MakeRelationships(_viewModel.PatientModel);
 
-            _viewModel.PatientModel = patient;
             return View("Index", _viewModel);
         }
 
@@ -56,7 +57,6 @@ namespace ElarosApp.Controllers
         {
             _viewModel.PatientModel.FinishedQuestionniare = true;
             HttpContext.Response.Cookies.Delete("LongCovidPatientAuthCookie");
-            _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 
@@ -74,7 +74,7 @@ namespace ElarosApp.Controllers
 
             _viewModel.PatientModel.QuestionId++;
             _context.SaveChanges();
-            return RedirectToAction("Index", _viewModel);
+            return RedirectToAction("Index", _viewModel.PatientModel);
         }
 
         private IActionResult PreviousQuestion()
@@ -85,7 +85,7 @@ namespace ElarosApp.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Index", _viewModel);
+            return RedirectToAction("Index", _viewModel.PatientModel);
         }
 
         public void MakeRelationships(PatientModel currentPatient)
