@@ -16,10 +16,12 @@ namespace ElarosApp.Controllers
 
         public QuestionsController(DataContext context)
         {
+            
             _context = context;
-            _viewModel.PatientModel = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
+            PatientModel pm = _context.Patients.FirstOrDefault(p => p.ReferalCode == patientName);
             AnswerModel ans = new AnswerModel();
-            _viewModel.AnswerModel = ans;
+
+            _viewModel = new ViewModel() { AnswerModel = ans, PatientModel = pm };
         }
 
         
@@ -28,10 +30,10 @@ namespace ElarosApp.Controllers
         public IActionResult Index(PatientModel P)
         {
             var patient = _context.Patients.FirstOrDefault(p => p.ReferalCode == P.ReferalCode);
-            patientName = patient.ReferalCode;
+            patientName = _viewModel.PatientModel.ReferalCode;
 
-            if (patient.FinishedQuestionniare == true)
-                return View("QuestionnaireFinished", patient);
+            if (_viewModel.PatientModel.FinishedQuestionniare == true)
+                return View("QuestionnaireFinished", _viewModel.PatientModel);
 
             MakeRelationships(patient);
 
@@ -58,7 +60,6 @@ namespace ElarosApp.Controllers
         {
             _viewModel.PatientModel.FinishedQuestionniare = true;
             HttpContext.Response.Cookies.Delete("LongCovidPatientAuthCookie");
-            _context.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 
