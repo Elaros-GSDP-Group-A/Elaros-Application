@@ -10,8 +10,16 @@ namespace ElarosApp.Controllers
 {
     public class PortalController : Controller
     {
+        private readonly DataContext _context;
+        LoginFormModel _clinician;
+        public PortalController(DataContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index(LoginFormModel Clinician)
         {
+            _clinician = Clinician;
             return View("../Clinician/Portal", Clinician);
         }
 
