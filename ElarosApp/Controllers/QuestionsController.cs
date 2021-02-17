@@ -24,8 +24,6 @@ namespace ElarosApp.Controllers
             _viewModel = new ViewModel() { AnswerModel = ans, PatientModel = pm };
         }
 
-        
-
         [HttpGet]
         public IActionResult Index(PatientModel P)
         {
@@ -64,6 +62,7 @@ namespace ElarosApp.Controllers
 
         private IActionResult NextQuestion()
         {
+
             
             switch (_viewModel.PatientModel.QuestionId)
             {
