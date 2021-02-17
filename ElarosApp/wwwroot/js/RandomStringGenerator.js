@@ -8,7 +8,6 @@ function CodeGenerator() {
     for (var i = 0; i < 5; i++) {
         code += NumberCode(min, max);
     }
-    console.log(code);
     document.getElementById("TextboxRefCode").value = code;
 }
 
