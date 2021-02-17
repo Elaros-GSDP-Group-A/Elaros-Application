@@ -1,11 +1,11 @@
-﻿@model ElarosApp.Models.PatientModel
+﻿@model ElarosApp.Models.ViewModel
 
 
-<span class="text-secondary p-1 small">Logged in as: <span class="text-success">@Model.ReferalCode</span></span>
+<span class="text-secondary p-1 small">Logged in as: <span class="text-success">@Model.PatientModel.ReferalCode</span></span>
 
-@if (Model.Question != null)
+@if (Model.PatientModel.Question != null)
 {
-    <h1 class="text-left display-4 bg-light text-secondary pb-1 pt-1 px-3 font-italic">Question - @Model.QuestionId:</h1>
+    <h1 class="text-left display-4 bg-light text-secondary pb-1 pt-1 px-3 font-italic">Question - @Model.PatientModel.QuestionId:</h1>
 }
 else
 {
@@ -16,7 +16,7 @@ else
     <div class="row position-relative m-4">
         <div class="col-12">
             <div class="progress progress-bar-striped active" style="height: 25px;">
-                @{int barValue = (int)Math.Round((((double)Model.QuestionId / 18.0) * 100), 0);}
+                @{int barValue = (int)Math.Round((((double)Model.PatientModel.QuestionId / 18.0) * 100), 0);}
                 <div class="progress-bar progress-bar-animated progress-bar-striped active bg-success box-shadow" id="ProgresBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: @barValue%;"><span class="lead font-weight-bold text-light">@barValue%</span></div>
             </div>
         </div>
@@ -29,11 +29,11 @@ else
 
         <div class="container text-center">
 
-            @if (Model.Question != null)
+            @if (Model.PatientModel.Question != null)
             {
-                if (!String.IsNullOrEmpty(Model.Question.QuestionContent))
+                if (!String.IsNullOrEmpty(Model.PatientModel.Question.QuestionContent))
                 {
-                    <p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
+                    <p class="font-weight-bold lead">@Model.PatientModel.Question.QuestionContent</p>
                 }
             }
             else
@@ -43,7 +43,7 @@ else
             }
 
             @{
-                switch (Model.QuestionId)
+                switch (Model.PatientModel.QuestionId)
                 {
 
                     case 1:
@@ -1068,7 +1068,7 @@ else
 
                 <a asp-action="Logout" asp-controller="Home" class="btn btn-danger px-5 btn-sm">Logout</a>
 
-                @if (Model.QuestionId == 18)
+                @if (Model.PatientModel.QuestionId == 18)
                 {
                     <button type="submit" class="btn btn-sm btn-outline-primary" name="submitButton" value="SubmitQuestionnaire" onclick="CompletedForm()">
                         Submit Questionnaire
