@@ -58,6 +58,7 @@ namespace ElarosApp.Controllers
 
         private IActionResult NextQuestion()
         {
+
             patient.QuestionId++;
             _context.SaveChanges();
             return RedirectToAction("Index", patient);
