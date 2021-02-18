@@ -28,6 +28,12 @@ else
     <form method="post" asp-controller="Questions" asp-action="OnPost">
 
         <div class="container text-center">
+            @{
+                if (Model.isDataNull)
+                {
+                    <p class="font-weight-bold text-danger">You must answer all the questions!</p>
+                }
+            }
 
             @if (Model.PatientModel.Question != null)
             {
@@ -35,7 +41,7 @@ else
 
                 //<p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
 
-                if(!String.IsNullOrEmpty(Model.PatientModel.Question.QuestionContent))
+                if (!String.IsNullOrEmpty(Model.PatientModel.Question.QuestionContent))
                 {
                     <p class="font-weight-bold lead">@Model.PatientModel.Question.QuestionContent</p>
                 }
@@ -47,12 +53,12 @@ else
             }
 
             @{
-                switch (Model.PatientModel.QuestionId)
-                {
+                        switch (Model.PatientModel.QuestionId)
+                        {
 
-                    case 1:
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null };
-                        Model.AnswerModel.TextboxAnswers = new List<string>() {"", ""};
+                            case 1:
+                            Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null, null };
+                            Model.AnswerModel.TextboxAnswers = new List<string>() { "", "" };
 
                         <div class="form-check form-check-inline">
                             <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
@@ -91,7 +97,7 @@ else
                         break;
                     case 2:
 
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", "", "", "", "", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "", "", "", "", "" };
                         <div class="form-group">
                             <table class="table table-borderless">
                                 <thead>
@@ -226,8 +232,8 @@ else
                         <br />
                         break;
                     case 3:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null, null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "" };
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null, null, null };
 
                         <div class="form-group col-12 mt-3">
                             <label for="coughQ1" class="lead">cough/ throat sensitivity</label>
@@ -290,8 +296,8 @@ else
 
                     case 4:
 
-                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "" };
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null, null };
 
                         <div class="form-group col-12 mt-3">
                             <label for="SwallingQ1" class="lead">Are you having difficulties eating, drinking or swallowing such as coughing, choking or avoiding any food or drinks?</label>
@@ -340,20 +346,20 @@ else
                         <br />
                         break;
                     case 5:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
                         @*<div class="form-group col-12 mt-3">
-                            <label for="FatigueQ1" class="lead">Do you become fatigued more easily compared to before your illness?</label>
-                            <br />
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">Yes</label>
-                            </div>
+                        <label for="FatigueQ1" class="lead">Do you become fatigued more easily compared to before your illness?</label>
+                        <br />
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                        </div>
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">No</label>
-                            </div>
-                        </div>*@
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">No</label>
+                        </div>
+                    </div>*@
 
                         <table class="table table-borderless">
                             <thead>
@@ -407,8 +413,8 @@ else
                         </table>
                         break;
                     case 6:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "" };
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null, null };
 
                         <div class="form-group col-12 mt-3">
                             <label for="ContinenceQ1" class="lead">Controlling your bowel</label>
@@ -457,18 +463,18 @@ else
                         break;
                     case 7:
 
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null };
 
                         <div class="form-group col-12 mt-3">
                             <label for="PainQ1" class="lead">Have you got any pain that is new since contracting the illness?</label>
                             <div class="form-check form-check-inline">
-                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio"  id="inlineRadio1" value=true>
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio1" value=true>
                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio"id="inlineRadio2" value=false>
+                                <input asp-for="AnswerModel.CheckboxAnswers[0]" class="form-check-input" type="radio" id="inlineRadio2" value=false>
                                 <label class="form-check-label" for="inlineRadio2">No</label>
                             </div>
                         </div>
@@ -525,8 +531,8 @@ else
                         </table>
                         break;
                     case 8:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "" };
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null, null };
 
                         <div class="form-group col-12 mt-3">
                             <label for="CognitionQ1" class="lead">Concentrating?</label>
@@ -571,7 +577,7 @@ else
                         </div>
                         break;
                     case 9:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
 
                         <table class="table table-borderless">
                             <thead>
@@ -625,7 +631,7 @@ else
                         </table>
                         break;
                     case 10:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
 
                         <table class="table table-borderless">
                             <thead>
@@ -680,8 +686,8 @@ else
                         break;
                     case 11:
 
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null, null, null, null};
-                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null, null, null, null };
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "" };
 
                         <div class="form-group col-12 mt-3">
                             <label for="PTSDQ1" class="lead">Have you had any unwanted memories of your illness or hospital admission whilst you were awake, so not counting dreams?</label>
@@ -754,8 +760,8 @@ else
                         break;
 
                     case 12:
-                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() {null};
-                        Model.AnswerModel.NumberAnswers = new List<string>() {""};
+                        Model.AnswerModel.CheckboxAnswers = new List<bool?>() { null };
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "" };
 
                         <div class="form-group col-12 mt-3">
                             <label for="CommsQ1" class="lead">Since your illness have you had new or worsened difficulty with communication/word finding difficulty/ understanding others ?</label>
@@ -788,7 +794,7 @@ else
                         </div>
                         break;
                     case 13:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
 
                         <table class="table table-borderless">
                             <thead>
@@ -842,7 +848,7 @@ else
                         </table>
                         break;
                     case 14:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -895,7 +901,7 @@ else
                         </table>
                         break;
                     case 15:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -948,7 +954,7 @@ else
                         </table>
                         break;
                     case 16:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -1001,7 +1007,7 @@ else
                         </table>
                         break;
                     case 17:
-                        Model.AnswerModel.NumberAnswers = new List<string>() {"", ""};
+                        Model.AnswerModel.NumberAnswers = new List<string>() { "", "" };
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -1054,7 +1060,7 @@ else
                         </table>
                         break;
                     case 18:
-                        Model.AnswerModel.TextboxAnswers = new List<string>() {"", "", "", "", "", "", ""};
+                        Model.AnswerModel.TextboxAnswers = new List<string>() { "", "", "", "", "", "", "" };
 
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">What is your employment situation and has your illness affected your ability to do your usual work? Occupation:</label>

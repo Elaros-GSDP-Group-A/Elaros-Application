@@ -17,6 +17,7 @@ namespace ElarosApp.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index(LoginFormModel Clinician)
         {
             _clinician = Clinician;
