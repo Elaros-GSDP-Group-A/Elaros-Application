@@ -35,7 +35,7 @@ else
 
                 //<p class="font-weight-bold lead">@Model.Question.QuestionContent</p>
 
-                if(!String.IsNullOrEmpty(Model.Question.QuestionContent))
+                if(!String.IsNullOrEmpty(Model.PatientModel.Question.QuestionContent))
                 {
                     <p class="font-weight-bold lead">@Model.PatientModel.Question.QuestionContent</p>
                 }
@@ -67,7 +67,7 @@ else
                         <br />
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">If yes, please elaborate further if you are comfortable doing so:</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[0]" class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
 
                         <div class="form-group col-12 mt-3">
@@ -86,7 +86,7 @@ else
                         <br />
                         <div class="form-group col-12 mt-3">
                             <label for="Textarea1" class="lead font-weight-bold">If yes, please elaborate further if you are comfortable doing so:</label>
-                            <textarea class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
+                            <textarea asp-for="AnswerModel.TextboxAnswers[1]" class="form-control" id="Textarea1" style="resize: none; margin-left:auto; margin-right:auto;" rows="3"></textarea>
                         </div>
                         break;
                     case 2:
