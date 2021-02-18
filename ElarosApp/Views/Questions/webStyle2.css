@@ -12,7 +12,15 @@ h3 {
 #carouselExampleControls {
     background: #F2F2F2;
 }
-
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+    height: 550px
+}
+/* Set gray background color and 100% height */
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+}
 
 p {
     color: black;
@@ -53,3 +61,13 @@ div.absolute {
 {
     padding: 50px;
 }
+
+.zoom {
+    transition: transform .2s;
+    margin: 0 auto;
+
+}
+   
+.zoom:hover {
+        transform: scale(2);
+    }
