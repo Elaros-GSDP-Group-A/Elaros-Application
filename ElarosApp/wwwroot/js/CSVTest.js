@@ -52,34 +52,37 @@ function exportCSVFile(headers, items, fileTitle) {
 
 function download() {
     var headers = {
-        model: "Phone Model".replace(/,/g, ""),
-        chargers: "Chargers",
-        cases: "Cases",
-        earphones: "Earphones"
+        symptom: "Symptoms".replace(/,/g, ""),
+        precovid: "Precovid",
+        postcovid: "Postcovid",
+        severity: "Severity"
     };
 
     itemsNotFormatted = [
         {
-            model: "Samsung S7",
-            chargers: "55",
-            cases: "56",
-            earphones: "57",
-            scratched: "2"
+            symptom: "Activities",
+            precovid: "4.5",
+            postcovid: "6.8",
+            severity: "5",
         },
         {
-            model: "Pixel XL",
-            chargers: "77",
-            cases: "78",
-            earphones: "79",
-            scratched: "4"
+            symptom: "Anxiety",
+            precovid: "2.3",
+            postcovid: "4.6",
+            severity: "3",
         },
         {
-            model: "iPhone 7",
-            chargers: "88",
-            cases: "89",
-            earphones: "90",
-            scratched: "6"
-        }
+            symptom: "Breathlessness",
+            precovid: "1.8",
+            postcovid: "7.1",
+            severity: "10",
+        },
+        {
+            symptom: "Cognition",
+            precovid: "2.5",
+            postcovid: "4.",
+            severity: "4",
+        },
     ];
 
     var itemsFormatted = [];
@@ -87,10 +90,10 @@ function download() {
     // format the data
     itemsNotFormatted.forEach((item) => {
         itemsFormatted.push({
-            model: item.model.replace(/,/g, ""), // remove commas to avoid errors,
-            chargers: item.chargers,
-            cases: item.cases,
-            earphones: item.earphones
+            symptom: item.symptom.replace(/,/g, ""), // remove commas to avoid errors,
+            precovid: item.precovid,
+            postcovid: item.postcovid,
+            severity: item.severity
         });
     });
 
