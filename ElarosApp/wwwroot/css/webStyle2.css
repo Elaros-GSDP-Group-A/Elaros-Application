@@ -81,3 +81,7 @@ div.absolute {
     .zoom:hover {
         transform: scale(2);
     }
+
+.btm-el {
+    margin-bottom: 100px;
+}
