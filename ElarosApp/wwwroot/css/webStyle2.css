@@ -1,0 +1,87 @@
+select {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+nav {
+    width: 100% !important;
+}
+
+.carousel {
+    height: 30px !important;
+}
+h2 {
+    text-align: center;
+}
+
+h3 {
+    color: black;
+    font-size: 30px;
+}
+
+/*#carouselExampleControls {
+    background: #F2F2F2;
+}*/
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) /
+.row.content {
+    height: 550px
+}
+/ Set gray background color and 100% height */
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+p {
+    color: black;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 24px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+#descr {
+    font-size: 20px;
+    font-style: italic;
+    color: darkorange;
+}
+
+label {
+    display: inline-block;
+    width: 96px;
+    padding-bottom: 25px;
+    padding-top: 20px;
+    text-align: left;
+    font-size: 13px;
+}
+
+
+#image {
+    text-align: center;
+}
+
+div.absolute {
+    position: center;
+    width: 700px;
+    height: 150px;
+    border: 3px solid #73AD21;
+}
+
+#carouselExampleControls {
+    padding: 5px 0px 0px 10px;
+    margin-bottom: 120px;
+}
+
+.zoom {
+    transition: transform .2s;
+    margin: 0 auto;
+}
+
+    .zoom:hover {
+        transform: scale(2);
+    }
+
+.btm-el {
+    margin-bottom: 100px;
+}

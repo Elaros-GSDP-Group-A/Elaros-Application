@@ -9,5 +9,6 @@ namespace ElarosApp.Models
     {
         public PatientModel PatientModel { get; set; }
         public AnswerModel AnswerModel { get; set; }
+        public bool isDataNull { get; set; } = false;
     }
 }
